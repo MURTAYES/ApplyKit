@@ -6,6 +6,7 @@ import { RESULTS } from './results';
 import { QUOTAS } from './quotas';
 import { EXAMINATIONS } from './examinations';
 import { GROUPS } from './groups';
+import { SUBJECTS } from './subjects';
 import { NATIONALITIES, MARITAL_STATUSES, DEPARTMENTAL_STATUSES, COURSE_DURATIONS, YES_NO_OPTIONS } from './general';
 import { EMPLOYMENT_TYPES } from './employment';
 import { normalizeText } from '../normalizer';
@@ -19,6 +20,7 @@ export {
   QUOTAS,
   EXAMINATIONS,
   GROUPS,
+  SUBJECTS,
   NATIONALITIES,
   MARITAL_STATUSES,
   DEPARTMENTAL_STATUSES,
@@ -38,7 +40,7 @@ const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
   examination: EXAMINATIONS,
   exam: EXAMINATIONS,
   group: GROUPS,
-  subject: GROUPS,
+  subject: SUBJECTS,
   nationality: NATIONALITIES,
   maritalstatus: MARITAL_STATUSES,
   departmentalstatus: DEPARTMENTAL_STATUSES,

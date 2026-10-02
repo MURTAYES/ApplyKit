@@ -101,5 +101,10 @@ export function isDependentParentKey(profileKey?: string): boolean {
  */
 export function isDependentChildKey(profileKey?: string): boolean {
   if (!profileKey) return false;
-  return profileKey.endsWith('.upazila_thana') || profileKey.endsWith('.upazila');
+  return (
+    profileKey.endsWith('.upazila_thana') ||
+    profileKey.endsWith('.upazila') ||
+    profileKey.endsWith('.subject')
+  );
 }
+
