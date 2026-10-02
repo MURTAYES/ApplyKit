@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/icon-128.png" width="96" height="96" alt="ApplyKit Logo" />
+  <img src="https://raw.githubusercontent.com/MURTAYES/ApplyKit/main/public/icons/icon-128.png" width="96" height="96" alt="ApplyKit Logo" />
 </p>
 
 <h1 align="center">ApplyKit — Local-First Job Application Autofiller</h1>
