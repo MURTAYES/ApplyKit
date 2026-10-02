@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# WXT & Build outputs
+.output/
+.wxt/
+dist/
+
+# Test coverage
+coverage/
+
+# OS / IDE files
+.DS_Store
+Thumbs.db
+*.log
