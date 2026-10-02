@@ -4,9 +4,26 @@ import { RELIGIONS } from './religions';
 import { GENDERS } from './genders';
 import { RESULTS } from './results';
 import { QUOTAS } from './quotas';
+import { EXAMINATIONS } from './examinations';
+import { GROUPS } from './groups';
+import { NATIONALITIES, MARITAL_STATUSES, DEPARTMENTAL_STATUSES, COURSE_DURATIONS, YES_NO_OPTIONS } from './general';
 import { normalizeText } from '../normalizer';
 
-export { DISTRICTS, BOARDS, RELIGIONS, GENDERS, RESULTS, QUOTAS };
+export {
+  DISTRICTS,
+  BOARDS,
+  RELIGIONS,
+  GENDERS,
+  RESULTS,
+  QUOTAS,
+  EXAMINATIONS,
+  GROUPS,
+  NATIONALITIES,
+  MARITAL_STATUSES,
+  DEPARTMENTAL_STATUSES,
+  COURSE_DURATIONS,
+  YES_NO_OPTIONS,
+};
 export type { DictionaryEntry };
 
 const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
@@ -16,11 +33,20 @@ const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
   gender: GENDERS,
   result: RESULTS,
   quota: QUOTAS,
+  examination: EXAMINATIONS,
+  exam: EXAMINATIONS,
+  group: GROUPS,
+  subject: GROUPS,
+  nationality: NATIONALITIES,
+  maritalstatus: MARITAL_STATUSES,
+  departmentalstatus: DEPARTMENTAL_STATUSES,
+  courseduration: COURSE_DURATIONS,
+  yesno: YES_NO_OPTIONS,
 };
 
 /**
  * Searches for all known aliases, canonical English, and Bengali names corresponding to a search term.
- * Can be scoped to a specific category (e.g. 'district', 'board') or searched globally.
+ * Can be scoped to a specific category (e.g. 'district', 'board', 'examination') or searched globally.
  */
 export function lookupBilingualAliases(
   term: string,

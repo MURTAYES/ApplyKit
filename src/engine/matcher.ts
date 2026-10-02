@@ -94,6 +94,14 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
+    profileKey: 'basicInfo.nationality',
+    sectionAllowed: ['basic_info', 'unknown'],
+    patterns: [
+      'nationality',
+      'জাতীয়তা',
+    ],
+  },
+  {
     profileKey: 'basicInfo.gender',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
@@ -108,6 +116,7 @@ const FIELD_RULES: FieldRule[] = [
     patterns: [
       'marital status',
       'marriage status',
+      'marital',
       'বৈবাহিক অবস্থা',
     ],
   },
@@ -129,13 +138,52 @@ const FIELD_RULES: FieldRule[] = [
       'nid number',
       'nid',
       'জাতীয় পরিচয়পত্র',
+      'জাতীয় পরিচয়পত্র নম্বর',
       'এনআইডি',
+    ],
+  },
+  {
+    profileKey: 'basicInfo.birthRegistration',
+    sectionAllowed: ['basic_info', 'unknown'],
+    patterns: [
+      'birth registration',
+      'birth registration no',
+      'birth registration number',
+      'birth reg',
+      'birth certificate',
+      'জন্ম নিবন্ধন',
+      'জন্ম নিবন্ধন নম্বর',
+    ],
+  },
+  {
+    profileKey: 'basicInfo.passport',
+    sectionAllowed: ['basic_info', 'unknown'],
+    patterns: [
+      'passport id',
+      'passport no',
+      'passport number',
+      'passport',
+      'পাসপোর্ট আইডি',
+      'পাসপোর্ট নম্বর',
+      'পাসপোর্ট',
+    ],
+  },
+  {
+    profileKey: 'basicInfo.departmentalStatus',
+    sectionAllowed: ['basic_info', 'unknown'],
+    patterns: [
+      'departmental status',
+      'department status',
+      'কর্মরত অবস্থা',
+      'বিভাগীয় অবস্থা',
+      'বিভাগীয় স্ট্যাটাস',
     ],
   },
   {
     profileKey: 'basicInfo.phone',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
+      'confirm mobile number',
       'confirm mobile',
       're enter mobile',
       'verify mobile',
@@ -240,6 +288,11 @@ const FIELD_RULES: FieldRule[] = [
   // --- EDUCATION SECTIONS (SSC, HSC, Graduation, Masters) ---
   // SSC
   {
+    profileKey: 'ssc.exam',
+    sectionAllowed: ['ssc'],
+    patterns: ['examination', 'exam', 'examination name', 'পরীক্ষা', 'পরীক্ষার নাম'],
+  },
+  {
     profileKey: 'ssc.roll',
     sectionAllowed: ['ssc'],
     patterns: ['roll no', 'roll number', 'roll', 'রোল নম্বর', 'রোল'],
@@ -252,7 +305,7 @@ const FIELD_RULES: FieldRule[] = [
   {
     profileKey: 'ssc.group',
     sectionAllowed: ['ssc'],
-    patterns: ['group', 'major', 'group major', 'subject', 'বিভাগ', 'গ্রুপ'],
+    patterns: ['group subject', 'group', 'major', 'group major', 'subject', 'বিভাগ', 'গ্রুপ'],
   },
   {
     profileKey: 'ssc.passingYear',
@@ -267,6 +320,11 @@ const FIELD_RULES: FieldRule[] = [
 
   // HSC
   {
+    profileKey: 'hsc.exam',
+    sectionAllowed: ['hsc'],
+    patterns: ['examination', 'exam', 'examination name', 'পরীক্ষা', 'পরীক্ষার নাম'],
+  },
+  {
     profileKey: 'hsc.roll',
     sectionAllowed: ['hsc'],
     patterns: ['roll no', 'roll number', 'roll', 'রোল নম্বর', 'রোল'],
@@ -279,7 +337,7 @@ const FIELD_RULES: FieldRule[] = [
   {
     profileKey: 'hsc.group',
     sectionAllowed: ['hsc'],
-    patterns: ['group', 'major', 'group major', 'subject', 'বিভাগ', 'গ্রুপ'],
+    patterns: ['group subject', 'group', 'major', 'group major', 'subject', 'বিভাগ', 'গ্রুপ'],
   },
   {
     profileKey: 'hsc.passingYear',
@@ -294,6 +352,11 @@ const FIELD_RULES: FieldRule[] = [
 
   // Graduation
   {
+    profileKey: 'graduation.exam',
+    sectionAllowed: ['graduation'],
+    patterns: ['examination', 'exam', 'examination name', 'পরীক্ষা', 'পরীক্ষার নাম'],
+  },
+  {
     profileKey: 'graduation.subject',
     sectionAllowed: ['graduation'],
     patterns: ['subject degree', 'subject', 'degree', 'degree name', 'major', 'বিষয়', 'ডিগ্রী'],
@@ -301,7 +364,7 @@ const FIELD_RULES: FieldRule[] = [
   {
     profileKey: 'graduation.university',
     sectionAllowed: ['graduation'],
-    patterns: ['institute university', 'university', 'institute', 'college', 'বিশ্ববিদ্যালয়', 'প্রতিষ্ঠান'],
+    patterns: ['institute university', 'university inst', 'university', 'institute', 'college', 'বিশ্ববিদ্যালয়', 'প্রতিষ্ঠান'],
   },
   {
     profileKey: 'graduation.passingYear',
@@ -321,6 +384,11 @@ const FIELD_RULES: FieldRule[] = [
 
   // Masters
   {
+    profileKey: 'masters.exam',
+    sectionAllowed: ['masters'],
+    patterns: ['examination', 'exam', 'examination name', 'পরীক্ষা', 'পরীক্ষার নাম'],
+  },
+  {
     profileKey: 'masters.subject',
     sectionAllowed: ['masters'],
     patterns: ['subject degree', 'subject', 'degree', 'degree name', 'major', 'বিষয়', 'ডিগ্রী'],
@@ -328,7 +396,7 @@ const FIELD_RULES: FieldRule[] = [
   {
     profileKey: 'masters.university',
     sectionAllowed: ['masters'],
-    patterns: ['institute university', 'university', 'institute', 'college', 'বিশ্ববিদ্যালয়', 'প্রতিষ্ঠান'],
+    patterns: ['institute university', 'university inst', 'university', 'institute', 'college', 'বিশ্ববিদ্যালয়', 'প্রতিষ্ঠান'],
   },
   {
     profileKey: 'masters.passingYear',
@@ -339,6 +407,11 @@ const FIELD_RULES: FieldRule[] = [
     profileKey: 'masters.cgpa',
     sectionAllowed: ['masters'],
     patterns: ['result cgpa', 'cgpa', 'result', 'gpa', 'ফলাফল', 'সিজিপিএ'],
+  },
+  {
+    profileKey: 'masters.courseDuration',
+    sectionAllowed: ['masters'],
+    patterns: ['course duration', 'duration', 'course duration years', 'মেয়াদ'],
   },
 ];
 

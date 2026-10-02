@@ -74,19 +74,102 @@ function deriveCategoryHint(profileKey?: string): string | undefined {
   if (lower.includes('religion')) return 'religion';
   if (lower.includes('gender') || lower.includes('sex')) return 'gender';
   if (lower.includes('quota')) return 'quota';
+  if (lower.includes('nationality')) return 'nationality';
+  if (lower.includes('marital')) return 'maritalstatus';
+  if (lower.includes('department')) return 'departmentalstatus';
+  if (lower.includes('exam')) return 'exam';
+  if (lower.includes('group') || lower.includes('subject')) return 'group';
+  if (lower.includes('duration')) return 'courseduration';
   if (lower.includes('result') || lower.includes('gpa') || lower.includes('cgpa')) return 'result';
   return undefined;
 }
 
+const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/**
+ * Unlocks optional sections like Masters when data is present in profile.
+ */
+function unlockApplicableSections(profile: Profile, rootElement: Document | HTMLElement): void {
+  const hasMastersData = Boolean(
+    profile.masters &&
+      (profile.masters.exam ||
+        profile.masters.subject ||
+        profile.masters.university ||
+        profile.masters.passingYear ||
+        profile.masters.cgpa)
+  );
+
+  if (hasMastersData) {
+    const checkboxes = Array.from(rootElement.querySelectorAll<HTMLInputElement>('input[type="checkbox"]'));
+    for (const cb of checkboxes) {
+      const parentText = (cb.closest('div, tr, fieldset, label')?.textContent || '').toLowerCase();
+      const idAndName = `${cb.id} ${cb.name}`.toLowerCase();
+      if (
+        (parentText.includes('master') || parentText.includes('applicable') || idAndName.includes('master')) &&
+        !cb.checked
+      ) {
+        cb.checked = true;
+        cb.dispatchEvent(new Event('click', { bubbles: true }));
+        cb.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    }
+  }
+}
+
+/**
+ * Handles Yes/No toggle dropdowns (such as National ID, Birth Registration, Passport ID)
+ * where selecting 'Yes' reveals a text input for entering the number.
+ */
+async function handleToggleDropdown(
+  selectEl: HTMLSelectElement,
+  profileValue: string | undefined,
+  fieldPattern: string,
+  rootElement: Document | HTMLElement
+): Promise<{ filled: boolean; numberFilled: boolean }> {
+  const hasValue = Boolean(profileValue && profileValue.trim() !== '');
+  const targetChoice = hasValue ? 'Yes' : 'No';
+
+  const optionMatch = findBestOptionMatch(selectEl, targetChoice, 'yesno');
+  if (optionMatch) {
+    setNativeSelectValue(selectEl, optionMatch.option.value);
+  }
+
+  if (hasValue && profileValue) {
+    // Wait brief interval for dynamic text input to appear/unhide
+    await sleep(60);
+
+    // Look for revealed text input in the same row/container or adjacent element
+    const container = selectEl.closest('tr, fieldset, .form-group, div') || rootElement;
+    const inputs = Array.from(container.querySelectorAll<HTMLInputElement>('input[type="text"], input:not([type])'));
+
+    for (const inp of inputs) {
+      const inpName = `${inp.name} ${inp.id} ${inp.getAttribute('aria-label') || ''} ${inp.placeholder || ''}`.toLowerCase();
+      if (inpName.includes(fieldPattern) || inputs.length === 1) {
+        if (isFieldEmpty(inp)) {
+          setNativeValue(inp, bengaliToAsciiDigits(profileValue));
+          return { filled: true, numberFilled: true };
+        }
+      }
+    }
+    return { filled: true, numberFilled: false };
+  }
+
+  return { filled: Boolean(optionMatch), numberFilled: false };
+}
+
 /**
  * Executes autofill across all eligible inputs, textareas, and select dropdowns in the DOM tree.
- * Handles dependent dropdowns asynchronously (e.g. District -> Upazila).
+ * Handles dependent dropdowns and dynamic toggle inputs asynchronously.
  */
 export async function executeFill(
   profile: Profile,
   rootElement: Document | HTMLElement = document,
   customMappings?: SiteMapping
 ): Promise<FillReport> {
+  // 0. Unlock applicable sections (e.g. Masters)
+  unlockApplicableSections(profile, rootElement);
+  await sleep(40);
+
   const allElements = Array.from(
     rootElement.querySelectorAll<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>(
       'input, textarea, select'
@@ -98,7 +181,7 @@ export async function executeFill(
   let skippedCount = 0;
   let unmatchedCount = 0;
 
-  // Split elements into non-dependent and dependent child elements (e.g. Upazila)
+  // Split elements into primary and dependent child elements (e.g. Upazila)
   const primaryElements: HTMLElement[] = [];
   const dependentElements: HTMLSelectElement[] = [];
 
@@ -115,7 +198,7 @@ export async function executeFill(
     }
   }
 
-  // 1. Process primary elements (Inputs, Textareas, Independent Dropdowns, Parent District Dropdowns)
+  // 1. Process primary elements
   for (const el of primaryElements) {
     const fieldName =
       el.getAttribute('name') || el.id || el.getAttribute('aria-label') || (el as HTMLInputElement).placeholder || 'Unnamed Field';
@@ -130,7 +213,6 @@ export async function executeFill(
       continue;
     }
 
-    // Match element to profile key
     const match = matchField(el as any, customMappings);
     if (!match) {
       unmatchedCount++;
@@ -141,8 +223,42 @@ export async function executeFill(
       continue;
     }
 
+    // Special Handling: Toggle Dropdowns (National ID, Birth Registration, Passport ID)
+    if (el instanceof HTMLSelectElement) {
+      if (match.profileKey === 'basicInfo.nid') {
+        const res = await handleToggleDropdown(el, profile.basicInfo.nid, 'nid', rootElement);
+        if (res.filled) {
+          filledCount++;
+          details.push({ fieldName, profileKey: match.profileKey, section: match.section, status: 'filled' });
+          if (res.numberFilled) filledCount++;
+        }
+        continue;
+      } else if (match.profileKey === 'basicInfo.birthRegistration') {
+        const res = await handleToggleDropdown(el, profile.basicInfo.birthRegistration, 'birth', rootElement);
+        if (res.filled) {
+          filledCount++;
+          details.push({ fieldName, profileKey: match.profileKey, section: match.section, status: 'filled' });
+          if (res.numberFilled) filledCount++;
+        }
+        continue;
+      } else if (match.profileKey === 'basicInfo.passport') {
+        const res = await handleToggleDropdown(el, profile.basicInfo.passport, 'passport', rootElement);
+        if (res.filled) {
+          filledCount++;
+          details.push({ fieldName, profileKey: match.profileKey, section: match.section, status: 'filled' });
+          if (res.numberFilled) filledCount++;
+        }
+        continue;
+      }
+    }
+
     // Resolve value from profile
-    const rawValue = resolveProfileValue(profile, match.profileKey);
+    let rawValue = resolveProfileValue(profile, match.profileKey);
+
+    // Default nationality if unspecified in profile
+    if (!rawValue && match.profileKey === 'basicInfo.nationality') {
+      rawValue = 'Bangladeshi';
+    }
 
     // If profile has no data for this field, leave untouched (FILL-04)
     if (!rawValue || rawValue.trim() === '') {
@@ -157,9 +273,19 @@ export async function executeFill(
     }
 
     if (el instanceof HTMLSelectElement) {
-      // Native select dropdown fill (DROP-01, DROP-02, DROP-04)
+      // Special check: If this is an education result dropdown and profile has GPA/CGPA or resultType
       const categoryHint = deriveCategoryHint(match.profileKey);
-      const optionMatch = findBestOptionMatch(el, rawValue, categoryHint);
+      let targetOptionValue = rawValue;
+
+      if (categoryHint === 'result') {
+        // If profileKey is ssc.gpa but user has ssc.resultType, use resultType for dropdown
+        if (match.section === 'ssc' && profile.ssc.resultType) targetOptionValue = profile.ssc.resultType;
+        else if (match.section === 'hsc' && profile.hsc.resultType) targetOptionValue = profile.hsc.resultType;
+        else if (match.section === 'graduation' && profile.graduation.resultType) targetOptionValue = profile.graduation.resultType;
+        else if (match.section === 'masters' && profile.masters.resultType) targetOptionValue = profile.masters.resultType;
+      }
+
+      const optionMatch = findBestOptionMatch(el, targetOptionValue, categoryHint);
 
       if (optionMatch) {
         setNativeSelectValue(el, optionMatch.option.value);
@@ -170,6 +296,28 @@ export async function executeFill(
           section: match.section,
           status: 'filled',
         });
+
+        // If result dropdown was set to GPA/CGPA, fill the dynamic GPA text input if present
+        if (categoryHint === 'result') {
+          await sleep(50);
+          const container = el.closest('tr, fieldset, .form-group, div') || rootElement;
+          const scoreInputs = Array.from(container.querySelectorAll<HTMLInputElement>('input[type="text"], input:not([type])'));
+          let scoreValue = '';
+          if (match.section === 'ssc') scoreValue = profile.ssc.gpa;
+          else if (match.section === 'hsc') scoreValue = profile.hsc.gpa;
+          else if (match.section === 'graduation') scoreValue = profile.graduation.cgpa;
+          else if (match.section === 'masters') scoreValue = profile.masters.cgpa;
+
+          if (scoreValue) {
+            for (const sInp of scoreInputs) {
+              if (isFieldEmpty(sInp)) {
+                setNativeValue(sInp, bengaliToAsciiDigits(scoreValue));
+                filledCount++;
+                break;
+              }
+            }
+          }
+        }
       } else {
         unmatchedCount++;
         details.push({

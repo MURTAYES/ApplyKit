@@ -8,14 +8,18 @@ export const BasicInfoSchema = z.object({
   motherNameEn: z.string().default(''),
   motherNameBn: z.string().default(''),
   dob: z.string().default(''),
+  nationality: z.string().default('Bangladeshi'),
   gender: z.string().default(''),
   nid: z.string().default(''),
+  birthRegistration: z.string().default(''),
+  passport: z.string().default(''),
   phone: z.string().default(''),
   email: z.string().default(''),
   bloodGroup: z.string().default(''),
   religion: z.string().default(''),
   maritalStatus: z.string().default(''),
   quota: z.string().default(''),
+  departmentalStatus: z.string().default(''),
 }).default({});
 
 export const AddressSchema = z.object({
