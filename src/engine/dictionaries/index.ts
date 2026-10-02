@@ -7,6 +7,7 @@ import { QUOTAS } from './quotas';
 import { EXAMINATIONS } from './examinations';
 import { GROUPS } from './groups';
 import { NATIONALITIES, MARITAL_STATUSES, DEPARTMENTAL_STATUSES, COURSE_DURATIONS, YES_NO_OPTIONS } from './general';
+import { EMPLOYMENT_TYPES } from './employment';
 import { normalizeText } from '../normalizer';
 
 export {
@@ -23,6 +24,7 @@ export {
   DEPARTMENTAL_STATUSES,
   COURSE_DURATIONS,
   YES_NO_OPTIONS,
+  EMPLOYMENT_TYPES,
 };
 export type { DictionaryEntry };
 
@@ -42,6 +44,8 @@ const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
   departmentalstatus: DEPARTMENTAL_STATUSES,
   courseduration: COURSE_DURATIONS,
   yesno: YES_NO_OPTIONS,
+  employmenttype: EMPLOYMENT_TYPES,
+  employedon: EMPLOYMENT_TYPES,
 };
 
 /**

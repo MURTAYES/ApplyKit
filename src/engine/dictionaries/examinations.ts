@@ -101,6 +101,16 @@ export const EXAMINATIONS: DictionaryEntry[] = [
     canonicalBn: 'ডিগ্রি (পাস)',
     aliases: ['degree (pass)', 'degree pass', 'bachelor (pass)', 'ডিগ্রি (পাস)', 'ডিগ্রী (পাস)', 'ডিগ্রি পাস'],
   },
+  {
+    canonicalEn: 'Fazil',
+    canonicalBn: 'ফাজিল',
+    aliases: ['fazil', 'ফাজিল', 'fazil (madrasah)'],
+  },
+  {
+    canonicalEn: 'Graduation Equivalent',
+    canonicalBn: 'স্নাতক সমমান',
+    aliases: ['graduation equivalent', 'equivalent', 'স্নাতক সমমান'],
+  },
 
   // Masters Level
   {
@@ -109,19 +119,9 @@ export const EXAMINATIONS: DictionaryEntry[] = [
     aliases: ['masters', 'master', 'post graduation', 'স্নাতকোত্তর', 'মাস্টার্স'],
   },
   {
-    canonicalEn: 'M.Sc',
-    canonicalBn: 'এম.এসসি',
-    aliases: ['m.sc', 'msc', 'm.sc.', 'এম.এসসি', 'এমএসসি'],
-  },
-  {
     canonicalEn: 'M.A',
     canonicalBn: 'এম.এ',
     aliases: ['m.a', 'ma', 'm.a.', 'এম.এ', 'এমএ'],
-  },
-  {
-    canonicalEn: 'M.B.A',
-    canonicalBn: 'এম.বি.এ',
-    aliases: ['m.b.a', 'mba', 'm.b.a.', 'এম.বি.এ', 'এমবিএ'],
   },
   {
     canonicalEn: 'M.S.S',
@@ -129,8 +129,33 @@ export const EXAMINATIONS: DictionaryEntry[] = [
     aliases: ['m.s.s', 'mss', 'm.s.s.', 'এম.এস.এস', 'এমএসএস'],
   },
   {
-    canonicalEn: 'LL.M',
+    canonicalEn: 'M.Sc',
+    canonicalBn: 'এম.এসসি',
+    aliases: ['m.sc', 'msc', 'm.sc.', 'এম.এসসি', 'এমএসসি'],
+  },
+  {
+    canonicalEn: 'M.Com',
+    canonicalBn: 'এম.কম',
+    aliases: ['m.com', 'mcom', 'm.com.', 'এম.কম', 'এমকম'],
+  },
+  {
+    canonicalEn: 'M.B.A',
+    canonicalBn: 'এম.বি.এ',
+    aliases: ['m.b.a', 'mba', 'm.b.a.', 'এম.বি.এ', 'এমবিএ'],
+  },
+  {
+    canonicalEn: 'L.L.M',
     canonicalBn: 'এলএল.এম',
-    aliases: ['ll.m', 'llm', 'll.m.', 'এলএল.এম', 'এলএলএম'],
+    aliases: ['l.l.m', 'l.l.m.', 'll.m', 'llm', 'll.m.', 'এলএল.এম', 'এলএলএম', 'আইন (মাস্টার্স)'],
+  },
+  {
+    canonicalEn: 'Kamil',
+    canonicalBn: 'কামিল',
+    aliases: ['kamil', 'কামিল', 'kamil (madrasah)'],
+  },
+  {
+    canonicalEn: 'Masters Equivalent',
+    canonicalBn: 'স্নাতকোত্তর সমমান',
+    aliases: ['masters equivalent', 'equivalent', 'স্নাতকোত্তর সমমান'],
   },
 ];
