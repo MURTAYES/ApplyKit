@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "lib": ["DOM", "DOM.Iterable", "ES2022"],
+    "jsx": "react-jsx",
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "types": ["wxt/client", "vitest/globals"]
+  },
+  "include": [
+    "src/**/*",
+    "entrypoints/**/*",
+    "tests/**/*",
+    "wxt.config.ts",
+    "vitest.config.ts"
+  ]
+}
