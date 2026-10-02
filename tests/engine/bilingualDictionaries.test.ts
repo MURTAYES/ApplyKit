@@ -43,6 +43,16 @@ describe('Bilingual Dictionaries', () => {
     expect(female).toContain('female');
   });
 
+  it('maps Upazilas and Thanas for districts with aliases', () => {
+    const dhakaUpazilas = lookupBilingualAliases('Uttara', 'upazila');
+    expect(dhakaUpazilas).toContain('uttara');
+    expect(dhakaUpazilas).toContain('উত্তরা');
+
+    const saltha = lookupBilingualAliases('SalThanaa', 'upazila');
+    expect(saltha).toContain('saltha');
+    expect(saltha).toContain('সালথা');
+  });
+
   it('handles empty or unrecognized input safely', () => {
     expect(lookupBilingualAliases('')).toEqual([]);
     expect(lookupBilingualAliases('UnknownCity123', 'district')).toEqual(['unknowncity123']);

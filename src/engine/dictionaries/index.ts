@@ -9,6 +9,8 @@ import { GROUPS } from './groups';
 import { SUBJECTS } from './subjects';
 import { NATIONALITIES, MARITAL_STATUSES, DEPARTMENTAL_STATUSES, COURSE_DURATIONS, YES_NO_OPTIONS } from './general';
 import { EMPLOYMENT_TYPES } from './employment';
+import { UPAZILAS_BY_DISTRICT, ALL_UPAZILAS, getUpazilasForDistrict } from './upazilas';
+import { UNIVERSITIES } from './universities';
 import { normalizeText } from '../normalizer';
 
 export {
@@ -21,17 +23,24 @@ export {
   EXAMINATIONS,
   GROUPS,
   SUBJECTS,
+  UNIVERSITIES,
   NATIONALITIES,
   MARITAL_STATUSES,
   DEPARTMENTAL_STATUSES,
   COURSE_DURATIONS,
   YES_NO_OPTIONS,
   EMPLOYMENT_TYPES,
+  UPAZILAS_BY_DISTRICT,
+  ALL_UPAZILAS,
+  getUpazilasForDistrict,
 };
 export type { DictionaryEntry };
 
 const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
   district: DISTRICTS,
+  upazila: ALL_UPAZILAS,
+  thana: ALL_UPAZILAS,
+  ps: ALL_UPAZILAS,
   board: BOARDS,
   religion: RELIGIONS,
   gender: GENDERS,
@@ -41,6 +50,8 @@ const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
   exam: EXAMINATIONS,
   group: GROUPS,
   subject: SUBJECTS,
+  university: UNIVERSITIES,
+  institute: UNIVERSITIES,
   nationality: NATIONALITIES,
   maritalstatus: MARITAL_STATUSES,
   departmentalstatus: DEPARTMENTAL_STATUSES,

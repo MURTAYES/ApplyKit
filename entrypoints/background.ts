@@ -1,3 +1,3 @@
 export default defineBackground(() => {
-  console.log('Donna service worker initialized');
+  console.log('ApplyKit service worker initialized');
 });

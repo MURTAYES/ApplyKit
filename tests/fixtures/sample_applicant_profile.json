@@ -1,0 +1,103 @@
+{
+  "basicInfo": {
+    "nameEn": "TANIM AHMED",
+    "nameBn": "তানিম আহমেদ",
+    "fatherNameEn": "LATE ABDUR RAHMAN",
+    "fatherNameBn": "মরহুম আবদুর রহমান",
+    "motherNameEn": "RASHIDA BEGUM",
+    "motherNameBn": "রাশিদা বেগম",
+    "dob": "1995-10-15",
+    "gender": "Male",
+    "religion": "Islam",
+    "maritalStatus": "Single",
+    "nationality": "Bangladeshi",
+    "quota": "Non-Quota",
+    "departmentalStatus": "None",
+    "nid": "19952691234567890",
+    "birthRegistration": "",
+    "passport": "",
+    "phone": "01712345678",
+    "email": "tanim.ahmed@example.com",
+    "bloodGroup": "B+"
+  },
+  "presentAddress": {
+    "careOf": "Abdur Rahman",
+    "village": "House 42, Road 11, Sector 4",
+    "district": "Dhaka",
+    "upazila": "Uttara",
+    "postOffice": "Uttara HPO",
+    "postCode": "1230"
+  },
+  "permanentAddress": {
+    "careOf": "Abdur Rahman",
+    "village": "Village: Rampur, Union: Chandpur",
+    "district": "Dhaka",
+    "upazila": "Uttara",
+    "postOffice": "Uttara HPO",
+    "postCode": "1230"
+  },
+  "ssc": {
+    "exam": "S.S.C",
+    "board": "Dhaka",
+    "roll": "102030",
+    "resultType": "GPA (out of 5)",
+    "gpa": "5.00",
+    "group": "Science",
+    "passingYear": "2011"
+  },
+  "hsc": {
+    "exam": "H.S.C",
+    "board": "Dhaka",
+    "roll": "405060",
+    "resultType": "GPA (out of 5)",
+    "gpa": "4.80",
+    "group": "Science",
+    "passingYear": "2013"
+  },
+  "graduation": {
+    "exam": "B.Sc Engineering",
+    "university": "Bangladesh University of Engineering and Technology (BUET)",
+    "subject": "Computer Science & Engineering",
+    "resultType": "CGPA (out of 4)",
+    "cgpa": "3.75",
+    "passingYear": "2018",
+    "courseDuration": "04 Years"
+  },
+  "masters": {
+    "exam": "M.Sc",
+    "university": "University of Dhaka",
+    "subject": "Computer Science",
+    "resultType": "CGPA (out of 4)",
+    "cgpa": "3.85",
+    "passingYear": "2020",
+    "courseDuration": "01 Year"
+  },
+  "jobExperiences": [
+    {
+      "id": "exp-1",
+      "organization": "Apex Solutions Ltd",
+      "designation": "Senior Software Engineer",
+      "employmentType": "Private Organization",
+      "startDate": "2021-01-01",
+      "endDate": "2024-03-31",
+      "isCurrent": false,
+      "responsibilities": "Architecting scalable cloud microservices"
+    },
+    {
+      "id": "exp-2",
+      "organization": "Innovatech Bangladesh",
+      "designation": "Junior Developer",
+      "employmentType": "Private Organization",
+      "startDate": "2018-06-01",
+      "endDate": "2020-12-31",
+      "isCurrent": false,
+      "responsibilities": "Frontend feature development in React"
+    }
+  ],
+  "otherQualifications": {
+    "computerTypingEn": "45 WPM",
+    "computerTypingBn": "35 WPM",
+    "drivingLicense": "DL-991204",
+    "extraCurricular": "National Debate Champion 2017"
+  }
+}

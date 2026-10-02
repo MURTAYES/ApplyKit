@@ -84,7 +84,9 @@ export function useProfile() {
       const newExp: JobExperience = {
         id: `exp-${Date.now()}-${Math.random().toString(36).substr(2, 4)}`,
         organization: '',
+        organizationAddress: '',
         designation: '',
+        employmentType: '',
         startDate: '',
         endDate: '',
         isCurrent: false,

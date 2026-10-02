@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Application Form - Teletalk Bangladesh</title>
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 13px; margin: 20px; }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 15px; }
+    td, th { border: 1px solid #ccc; padding: 6px 8px; vertical-align: middle; }
+    .sec-header { background-color: #005c30; color: #fff; font-weight: bold; padding: 6px; }
+    input[type="text"], select, textarea { width: 95%; padding: 4px; box-sizing: border-box; }
+    .btn-add { background: #007bff; color: #fff; border: none; padding: 6px 12px; cursor: pointer; }
+    .declaration-box { background: #fdf2e9; border: 1px solid #e0b48c; padding: 10px; margin-top: 15px; }
+  </style>
+</head>
+<body>
+
+  <h2>ONLINE APPLICATION FORM FOR RECRUITMENT</h2>
+
+  <form id="applicationForm" name="applicationForm" method="POST" action="/submit">
+
+    <!-- 1. BASIC INFORMATION -->
+    <table id="tbl_basic_info">
+      <tr><th colspan="6" class="sec-header">Basic Information / সাধারণ তথ্য</th></tr>
+      <tr>
+        <td width="20%">Applicant's Name</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="p_name" id="p_name" /></td>
+        <td width="20%">আবেদনকারীর নাম (বাংলায়)</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="p_name_ban" id="p_name_ban" /></td>
+      </tr>
+      <tr>
+        <td>Father's Name</td><td>:</td>
+        <td><input type="text" name="father_name" id="father_name" /></td>
+        <td>পিতার নাম (বাংলায়)</td><td>:</td>
+        <td><input type="text" name="father_name_ban" id="father_name_ban" /></td>
+      </tr>
+      <tr>
+        <td>Mother's Name</td><td>:</td>
+        <td><input type="text" name="mother_name" id="mother_name" /></td>
+        <td>মাতার নাম (বাংলায়)</td><td>:</td>
+        <td><input type="text" name="mother_name_ban" id="mother_name_ban" /></td>
+      </tr>
+      <tr>
+        <td>Date of Birth</td><td>:</td>
+        <td><input type="text" name="dob" id="dob" placeholder="YYYY-MM-DD" /></td>
+        <td>Gender</td><td>:</td>
+        <td>
+          <select name="gender" id="gender">
+            <option value="">Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+            <option value="Other">Other</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Religion</td><td>:</td>
+        <td>
+          <select name="religion" id="religion">
+            <option value="">Select Religion</option>
+            <option value="1">Islam</option>
+            <option value="2">Hinduism</option>
+            <option value="3">Buddhism</option>
+            <option value="4">Christianity</option>
+          </select>
+        </td>
+        <td>Marital Status</td><td>:</td>
+        <td>
+          <select name="marital_status" id="marital_status">
+            <option value="">Select</option>
+            <option value="1">Single</option>
+            <option value="2">Married</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>National ID</td><td>:</td>
+        <td colspan="4">
+          <select name="nid" id="nid">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+          <input type="text" name="nid_no" id="nid_no" placeholder="Enter National ID" style="display:inline; width:200px; margin-left:10px;" />
+        </td>
+      </tr>
+      <tr>
+        <td>Mobile Number</td><td>:</td>
+        <td><input type="text" name="mobile" id="mobile" /></td>
+        <td>Confirm Mobile Number</td><td>:</td>
+        <td><input type="text" name="confirm_mobile" id="confirm_mobile" /></td>
+      </tr>
+      <tr>
+        <td>Email</td><td>:</td>
+        <td><input type="text" name="email" id="email" /></td>
+        <td>Quota</td><td>:</td>
+        <td>
+          <select name="quota" id="quota">
+            <option value="1">Non-Quota</option>
+            <option value="2">Freedom Fighter</option>
+            <option value="3">Child/Grandchild of Freedom Fighter</option>
+            <option value="4">Physically Handicapped</option>
+            <option value="5">Ethnic Minority</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Departmental Status</td><td>:</td>
+        <td colspan="4">
+          <select name="dept_status" id="dept_status">
+            <option value="0">None</option>
+            <option value="1">Government Employee</option>
+            <option value="2">Semi Government Employee</option>
+            <option value="3">Autonomous Body</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <!-- 2. PRESENT & PERMANENT ADDRESS -->
+    <table id="tbl_present_address">
+      <tr><th colspan="6" class="sec-header">Present Address / বর্তমান ঠিকানা</th></tr>
+      <tr>
+        <td width="20%">Care of</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="present_care" id="present_care" /></td>
+        <td width="20%">Village/Road/Flat</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="present_village" id="present_village" /></td>
+      </tr>
+      <tr>
+        <td>District</td><td>:</td>
+        <td>
+          <select name="present_district" id="present_district">
+            <option value="">Select District</option>
+            <option value="1">Dhaka</option>
+            <option value="2">Gazipur</option>
+            <option value="3">Chattogram</option>
+          </select>
+        </td>
+        <td>Upazila / Thana</td><td>:</td>
+        <td>
+          <select name="present_thana" id="present_thana">
+            <option value="">Select Upazila</option>
+            <option value="101">Uttara</option>
+            <option value="102">Mirpur</option>
+            <option value="103">Gulshan</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Post Office</td><td>:</td>
+        <td><input type="text" name="present_post" id="present_post" /></td>
+        <td>Postal Code</td><td>:</td>
+        <td><input type="text" name="present_pcode" id="present_pcode" /></td>
+      </tr>
+    </table>
+
+    <table id="tbl_permanent_address">
+      <tr><th colspan="6" class="sec-header">Permanent Address / স্থায়ী ঠিকানা</th></tr>
+      <tr>
+        <td width="20%">Care of</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="permanent_care" id="permanent_care" /></td>
+        <td width="20%">Village/Road/Flat</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="permanent_village" id="permanent_village" /></td>
+      </tr>
+      <tr>
+        <td>District</td><td>:</td>
+        <td>
+          <select name="permanent_district" id="permanent_district">
+            <option value="">Select District</option>
+            <option value="1">Dhaka</option>
+            <option value="2">Gazipur</option>
+            <option value="3">Chattogram</option>
+          </select>
+        </td>
+        <td>Upazila / Thana</td><td>:</td>
+        <td>
+          <select name="permanent_thana" id="permanent_thana">
+            <option value="">Select Upazila</option>
+            <option value="101">Uttara</option>
+            <option value="102">Mirpur</option>
+            <option value="103">Gulshan</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Post Office</td><td>:</td>
+        <td><input type="text" name="permanent_post" id="permanent_post" /></td>
+        <td>Postal Code</td><td>:</td>
+        <td><input type="text" name="permanent_pcode" id="permanent_pcode" /></td>
+      </tr>
+    </table>
+
+    <!-- 3. EDUCATIONAL QUALIFICATIONS (SSC, HSC, Graduation, Masters) -->
+    <table id="tbl_ssc">
+      <tr><th colspan="6" class="sec-header">Secondary School Certificate (S.S.C)</th></tr>
+      <tr>
+        <td width="20%">Examination</td><td width="2%">:</td>
+        <td width="28%">
+          <select name="ssc_exam" id="ssc_exam">
+            <option value="">Select</option>
+            <option value="1">S.S.C</option>
+            <option value="2">Dakhil</option>
+            <option value="3">S.S.C Vocational</option>
+          </select>
+        </td>
+        <td width="20%">Board</td><td width="2%">:</td>
+        <td width="28%">
+          <select name="ssc_board" id="ssc_board">
+            <option value="">Select Board</option>
+            <option value="1">Dhaka</option>
+            <option value="2">Cumilla</option>
+            <option value="3">Rajshahi</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Roll Number</td><td>:</td>
+        <td><input type="text" name="ssc_roll" id="ssc_roll" /></td>
+        <td>Result</td><td>:</td>
+        <td>
+          <select name="ssc_result" id="ssc_result">
+            <option value="">Select Result</option>
+            <option value="GPA5">GPA (out of 5)</option>
+            <option value="DIV1">First Division</option>
+          </select>
+          <input type="text" name="ssc_gpa_score" id="ssc_gpa_score" placeholder="GPA" style="width:70px; margin-left:5px;" />
+        </td>
+      </tr>
+      <tr>
+        <td>Group / Subject</td><td>:</td>
+        <td>
+          <select name="ssc_group" id="ssc_group">
+            <option value="">Select Group</option>
+            <option value="SCI">Science</option>
+            <option value="HUM">Humanities</option>
+            <option value="BUS">Business Studies</option>
+          </select>
+        </td>
+        <td>Passing Year</td><td>:</td>
+        <td>
+          <select name="ssc_year" id="ssc_year">
+            <option value="">Select Year</option>
+            <option value="2010">2010</option>
+            <option value="2011">2011</option>
+            <option value="2012">2012</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <table id="tbl_hsc">
+      <tr><th colspan="6" class="sec-header">Higher Secondary Certificate (H.S.C)</th></tr>
+      <tr>
+        <td width="20%">Examination</td><td width="2%">:</td>
+        <td width="28%">
+          <select name="hsc_exam" id="hsc_exam">
+            <option value="">Select</option>
+            <option value="1">H.S.C</option>
+            <option value="2">Alim</option>
+          </select>
+        </td>
+        <td width="20%">Board</td><td width="2%">:</td>
+        <td width="28%">
+          <select name="hsc_board" id="hsc_board">
+            <option value="">Select Board</option>
+            <option value="1">Dhaka</option>
+            <option value="2">Cumilla</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Roll Number</td><td>:</td>
+        <td><input type="text" name="hsc_roll" id="hsc_roll" /></td>
+        <td>Result</td><td>:</td>
+        <td>
+          <select name="hsc_result" id="hsc_result">
+            <option value="">Select Result</option>
+            <option value="GPA5">GPA (out of 5)</option>
+          </select>
+          <input type="text" name="hsc_gpa_score" id="hsc_gpa_score" placeholder="GPA" style="width:70px; margin-left:5px;" />
+        </td>
+      </tr>
+      <tr>
+        <td>Group / Subject</td><td>:</td>
+        <td>
+          <select name="hsc_group" id="hsc_group">
+            <option value="">Select Group</option>
+            <option value="SCI">Science</option>
+            <option value="BUS">Business Studies</option>
+          </select>
+        </td>
+        <td>Passing Year</td><td>:</td>
+        <td>
+          <select name="hsc_year" id="hsc_year">
+            <option value="">Select Year</option>
+            <option value="2012">2012</option>
+            <option value="2013">2013</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <table id="tbl_graduation">
+      <tr><th colspan="6" class="sec-header">Graduation / Bachelor Degree</th></tr>
+      <tr>
+        <td width="20%">Examination</td><td width="2%">:</td>
+        <td width="28%">
+          <select name="gra_exam" id="gra_exam">
+            <option value="">Select</option>
+            <option value="1">B.Sc Engineering</option>
+            <option value="2">Honors</option>
+            <option value="3">B.B.A</option>
+          </select>
+        </td>
+        <td width="20%">University / Institute</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="gra_institute" id="gra_institute" /></td>
+      </tr>
+      <tr>
+        <td>Subject / Degree</td><td>:</td>
+        <td><input type="text" name="gra_subject" id="gra_subject" /></td>
+        <td>Result</td><td>:</td>
+        <td>
+          <select name="gra_result" id="gra_result">
+            <option value="">Select</option>
+            <option value="CGPA4">CGPA (out of 4)</option>
+          </select>
+          <input type="text" name="gra_cgpa_score" id="gra_cgpa_score" placeholder="CGPA" style="width:70px; margin-left:5px;" />
+        </td>
+      </tr>
+      <tr>
+        <td>Passing Year</td><td>:</td>
+        <td>
+          <select name="gra_year" id="gra_year">
+            <option value="">Select Year</option>
+            <option value="2017">2017</option>
+            <option value="2018">2018</option>
+          </select>
+        </td>
+        <td>Course Duration</td><td>:</td>
+        <td>
+          <select name="gra_duration" id="gra_duration">
+            <option value="4 Years">4 Years</option>
+            <option value="3 Years">3 Years</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+
+    <!-- Masters with If Applicable checkbox -->
+    <fieldset id="fs_masters">
+      <legend>Masters Degree</legend>
+      <label><input type="checkbox" id="mas_applicable" name="mas_applicable" /> If Applicable</label>
+      <table id="tbl_masters">
+        <tr>
+          <td width="20%">Examination</td><td width="2%">:</td>
+          <td width="28%">
+            <select name="mas_exam" id="mas_exam">
+              <option value="">Select</option>
+              <option value="1">Masters</option>
+              <option value="2">M.Sc Engineering</option>
+            </select>
+          </td>
+          <td width="20%">University / Institute</td><td width="2%">:</td>
+          <td width="28%"><input type="text" name="mas_institute" id="mas_institute" /></td>
+        </tr>
+        <tr>
+          <td>Subject / Degree</td><td>:</td>
+          <td><input type="text" name="mas_subject" id="mas_subject" /></td>
+          <td>Passing Year</td><td>:</td>
+          <td>
+            <select name="mas_year" id="mas_year">
+              <option value="">Select Year</option>
+              <option value="2019">2019</option>
+              <option value="2020">2020</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <!-- 4. JOB EXPERIENCE (REPEATABLE SECTION) -->
+    <fieldset id="fs_job_exp" class="job-experience">
+      <legend>Job Experience / চাকরির অভিজ্ঞতা</legend>
+      <label><input type="checkbox" id="exp_applicable" name="exp_applicable" /> If Applicable</label>
+      
+      <div id="jobExpContainer">
+        <table class="job-exp-table" id="job_row_1">
+          <tr>
+            <td width="20%">Employed on</td><td width="2%">:</td>
+            <td width="28%">
+              <select name="emp_type_1" id="emp_type_1">
+                <option value="">Select</option>
+                <option value="1">Regular Basis Under Revenue Budget</option>
+                <option value="3">Private Organization</option>
+              </select>
+            </td>
+            <td width="20%">Organization Name</td><td width="2%">:</td>
+            <td width="28%"><input type="text" name="organization_1" id="organization_1" /></td>
+          </tr>
+          <tr>
+            <td>Designation / Post</td><td>:</td>
+            <td><input type="text" name="designation_1" id="designation_1" /></td>
+            <td>Office Address</td><td>:</td>
+            <td><input type="text" name="org_address_1" id="org_address_1" /></td>
+          </tr>
+          <tr>
+            <td>Length of Service</td><td>:</td>
+            <td colspan="4">
+              <input type="text" name="from_date_1" id="from_date_1" placeholder="MM/DD/YYYY" style="width:120px;" />
+              to
+              <input type="text" name="to_date_1" id="to_date_1" placeholder="MM/DD/YYYY" style="width:120px;" />
+              <label><input type="checkbox" name="is_current_1" id="is_current_1" /> CurrentlyWorking</label>
+            </td>
+          </tr>
+          <tr>
+            <td>Key Responsibilities</td><td>:</td>
+            <td colspan="4"><textarea name="responsibilities_1" id="responsibilities_1" rows="2"></textarea></td>
+          </tr>
+        </table>
+      </div>
+
+      <button type="button" id="btnAddMoreExp" class="btn-add">+ Add More</button>
+    </fieldset>
+
+    <!-- 5. OTHER QUALIFICATIONS -->
+    <table id="tbl_qualifications">
+      <tr><th colspan="6" class="sec-header">Other Qualifications / অতিরিক্ত যোগ্যতা</th></tr>
+      <tr>
+        <td width="20%">Computer Typing Speed (English)</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="typing_speed_english" id="typing_speed_english" /></td>
+        <td width="20%">Computer Typing Speed (Bangla)</td><td width="2%">:</td>
+        <td width="28%"><input type="text" name="typing_speed_bangla" id="typing_speed_bangla" /></td>
+      </tr>
+      <tr>
+        <td>Driving License No.</td><td>:</td>
+        <td colspan="4"><input type="text" name="driving_license_no" id="driving_license_no" /></td>
+      </tr>
+    </table>
+
+    <!-- 6. DECLARATION & CAPTCHA (NEVER TOUCHED - R3, R4) -->
+    <div class="declaration-box">
+      <label>
+        <input type="checkbox" name="declaration" id="chk_declaration" />
+        <strong>I hereby declare that all the above information is correct and true.</strong>
+      </label>
+      <div style="margin-top:10px;">
+        <span>Validation Code: <strong>[CAPTCHA_IMAGE]</strong></span>
+        <input type="text" name="captcha_code" id="captcha_code" placeholder="Enter validation code" style="width:150px; margin-left:10px;" />
+      </div>
+    </div>
+
+  </form>
+
+</body>
+</html>

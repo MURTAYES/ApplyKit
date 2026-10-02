@@ -35,7 +35,7 @@ export default function App() {
     return (
       <div className="loading-screen">
         <div className="loading-spinner"></div>
-        <p>// INITIALIZING APPLICANT REGISTRY DOSSIER...</p>
+        <p>// LOADING APPLICANT PROFILE...</p>
       </div>
     );
   }
@@ -51,47 +51,46 @@ export default function App() {
             <div className="telemetry-left">
               <span className="sidebar-dot"></span>
               <span style={{ fontWeight: 800, color: 'var(--obsidian)' }}>
-                DONNA // APPLICANT DOSSIER &amp; CREDENTIALING SYSTEM
+                APPLYKIT // APPLICANT PROFILE MANAGER
               </span>
               <span style={{ color: 'var(--hairline)' }}>|</span>
               <span>LOCAL FORM FILLING ENGINE</span>
             </div>
             <div className="telemetry-right">
-              <span>REF: <strong style={{ color: 'var(--obsidian)' }}>[FORM-AP-704]</strong></span>
               <span>STORAGE: <strong style={{ color: 'var(--obsidian)' }}>LOCAL CHROME MV3</strong></span>
-              <span className="telemetry-badge">MANDATORY DISCLOSURE</span>
+              <span className="telemetry-badge">100% PRIVATE</span>
             </div>
           </div>
 
           <div className="monumental-headline-grid">
             <div>
-              <div className="dossier-tag">
-                // OFFICIAL PERSONNEL ENROLLMENT DOSSIER
+              <div className="brand-tag">
+                // ONE PROFILE • ZERO HASSLE • 1-CLICK AUTOFILL
               </div>
               <h1 className="page-main-title">
-                APPLICATION FOR TENURE &amp; ADMISSION
+                APPLICANT MASTER PROFILE
               </h1>
               <p className="page-subtitle">
-                VERIFICATION OF CIVIL IDENTIFICATION, DOMICILE, STATUTORY CREDENTIALS, AND PROFESSIONAL CHRONICLE.
+                Configure your details once. ApplyKit securely fills supported online job application forms in one click.
               </p>
             </div>
 
             <div className="registry-meta-card">
               <div className="row strong">
-                <span>REGISTRY CODE</span>
-                <span style={{ color: 'var(--crimson)' }}>CLASS-A</span>
+                <span>SECURITY</span>
+                <span style={{ color: 'var(--crimson)' }}>LOCAL SANDBOX</span>
               </div>
               <div className="row">
-                <span>SPECIFICATION</span>
-                <span>PSL-HR-2024</span>
+                <span>PRIVACY</span>
+                <span>ON-DEVICE ONLY</span>
               </div>
               <div className="row">
-                <span>CLEARANCE</span>
-                <span>TIER-01 LOCAL</span>
+                <span>TELEMETRY</span>
+                <span>ZERO TRACKING</span>
               </div>
               <div className="row" style={{ fontWeight: 800, color: 'var(--obsidian)', marginTop: '4px' }}>
-                <span>FORM LEVEL</span>
-                <span>COMPLETE AUDIT</span>
+                <span>STATUS</span>
+                <span style={{ color: '#059669' }}>READY TO FILL</span>
               </div>
             </div>
           </div>
@@ -125,7 +124,7 @@ export default function App() {
             secCode="SEC 03"
             title="PERMANENT ADDRESS"
             titleBn="স্থায়ী ঠিকানা"
-            telemetryTag="JURISDICTIONAL SITUS"
+            telemetryTag="PERMANENT DOMICILE"
             data={profile.permanentAddress}
             onChange={(field, val) => updateField('permanentAddress', field, val)}
           />
@@ -133,10 +132,9 @@ export default function App() {
           <SecondaryEducationCard
             id="sec-ssc"
             secCode="SEC 04"
-            tierTag="[TIER-01]"
             title="S.S.C. / EQUIVALENT LEVEL"
             titleBn="মাধ্যমিক বা সমমান"
-            telemetryTag="MINIMUM REQ: COMPLETED"
+            telemetryTag="SECONDARY EDUCATION"
             data={profile.ssc}
             onChange={(field, val) => updateField('ssc', field, val)}
           />
@@ -144,10 +142,9 @@ export default function App() {
           <SecondaryEducationCard
             id="sec-hsc"
             secCode="SEC 05"
-            tierTag="[TIER-02]"
             title="H.S.C. / EQUIVALENT LEVEL"
             titleBn="উচ্চ মাধ্যমিক বা সমমান"
-            telemetryTag="MINIMUM REQ: COMPLETED"
+            telemetryTag="HIGHER SECONDARY"
             data={profile.hsc}
             onChange={(field, val) => updateField('hsc', field, val)}
           />
@@ -155,10 +152,9 @@ export default function App() {
           <HigherEducationCard
             id="sec-graduation"
             secCode="SEC 06"
-            tierTag="[TIER-03]"
             title="GRADUATION / EQUIVALENT LEVEL"
             titleBn="স্নাতক বা সমমান"
-            telemetryTag="MANDATORY JURIS DEGREE"
+            telemetryTag="UNDERGRADUATE DEGREE"
             data={profile.graduation}
             onChange={(field, val) => updateField('graduation', field, val)}
           />
@@ -166,10 +162,9 @@ export default function App() {
           <HigherEducationCard
             id="sec-masters"
             secCode="SEC 07"
-            tierTag="[TIER-04]"
             title="MASTERS / POST-GRADUATION LEVEL"
             titleBn="স্নাতকোত্তর বা সমমান"
-            telemetryTag="OPTIONAL ADVANCED SPECIFICATION"
+            telemetryTag="POST-GRADUATE (OPTIONAL)"
             data={profile.masters}
             onChange={(field, val) => updateField('masters', field, val)}
           />

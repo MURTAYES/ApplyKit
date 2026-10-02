@@ -1,6 +1,7 @@
 import { defineContentScript } from 'wxt/sandbox';
 import { loadProfile } from '../src/storage/profileStorage';
 import { executeFill } from '../src/engine/fillEngine';
+import { getMappingForUrl } from '../src/engine/siteResolver';
 
 export default defineContentScript({
   matches: ['*://*/*'],
@@ -9,7 +10,9 @@ export default defineContentScript({
       if (message.action === 'TRIGGER_FILL') {
         loadProfile()
           .then(async (profile) => {
-            const report = await executeFill(profile, document);
+            const currentUrl = typeof window !== 'undefined' ? window.location.href : '';
+            const siteMapping = getMappingForUrl(currentUrl);
+            const report = await executeFill(profile, document, siteMapping || undefined);
             sendResponse({ success: true, report });
           })
           .catch((err) => {
@@ -20,4 +23,3 @@ export default defineContentScript({
     });
   },
 });
-

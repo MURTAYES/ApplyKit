@@ -16,7 +16,7 @@ export function ImportExportActions({
 
   const handleExport = () => {
     exportProfileToJson(profile);
-    setFeedback({ message: '// DOSSIER EXPORTED SUCCESSFULLY AS JSON SPEC', isError: false });
+    setFeedback({ message: '✓ Profile exported successfully as JSON file', isError: false });
     setTimeout(() => setFeedback(null), 4000);
   };
 
@@ -29,12 +29,12 @@ export function ImportExportActions({
       const result = importProfileFromJson(text);
       if (result.success && result.data) {
         onImportSuccess(result.data);
-        setFeedback({ message: '// DOSSIER PARSED, VALIDATED AND PERSISTED TO LOCAL STORAGE', isError: false });
+        setFeedback({ message: '✓ Profile imported and saved to local storage', isError: false });
       } else {
-        setFeedback({ message: `// ERROR: ${result.error || 'INVALID PAYLOAD'}`, isError: true });
+        setFeedback({ message: `// Error: ${result.error || 'Invalid file format'}`, isError: true });
       }
     } catch {
-      setFeedback({ message: '// ERROR: UNABLE TO READ SELECTED FILE', isError: true });
+      setFeedback({ message: '// Error: Unable to read selected file', isError: true });
     } finally {
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
@@ -46,8 +46,8 @@ export function ImportExportActions({
   return (
     <div className="backup-restore-bar">
       <div className="backup-label-wrap">
-        <span className="backup-title">DOSSIER BACKUP &amp; PORTABILITY // তথ্য সংরক্ষণ</span>
-        <span className="backup-desc">EXPORT SANITIZED JSON DOSSIER OR IMPORT PRIOR SPECIFICATION</span>
+        <span className="backup-title">PROFILE BACKUP &amp; DATA SYNC // তথ্য সংরক্ষণ</span>
+        <span className="backup-desc">Export your applicant profile as JSON or import an existing profile file</span>
       </div>
 
       <div className="action-button-group">
@@ -57,7 +57,7 @@ export function ImportExportActions({
           onClick={handleExport}
           data-testid="export-profile-btn"
         >
-          <span>↑</span> Export JSON [EX-01]
+          <span>↑</span> Export Profile JSON
         </button>
 
         <button
@@ -66,7 +66,7 @@ export function ImportExportActions({
           onClick={() => fileInputRef.current?.click()}
           data-testid="import-profile-btn"
         >
-          <span>↓</span> Import JSON [IM-01]
+          <span>↓</span> Import Profile JSON
         </button>
 
         <input

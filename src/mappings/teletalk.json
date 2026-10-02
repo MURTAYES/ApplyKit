@@ -1,0 +1,295 @@
+{
+  "domain": "teletalk.com.bd",
+  "name": "Teletalk Bangladesh Recruitment Portal",
+  "urlPatterns": [
+    "^https?:\\/\\/([a-zA-Z0-9-]+\\.)?teletalk\\.com\\.bd\\/.*",
+    "^https?:\\/\\/alljobs\\.teletalk\\.com\\.bd\\/.*"
+  ],
+  "fields": {
+    "nameEn": {
+      "selector": "input#p_name, input[name='p_name'], input#applicant_name",
+      "profileKey": "basicInfo.nameEn",
+      "section": "basic_info"
+    },
+    "nameBn": {
+      "selector": "input#p_name_ban, input[name='p_name_ban'], input#applicant_name_bn",
+      "profileKey": "basicInfo.nameBn",
+      "section": "basic_info"
+    },
+    "fatherNameEn": {
+      "selector": "input#father_name, input[name='father_name'], input#fa_name",
+      "profileKey": "basicInfo.fatherNameEn",
+      "section": "basic_info"
+    },
+    "fatherNameBn": {
+      "selector": "input#father_name_ban, input[name='father_name_ban'], input#fa_name_bn",
+      "profileKey": "basicInfo.fatherNameBn",
+      "section": "basic_info"
+    },
+    "motherNameEn": {
+      "selector": "input#mother_name, input[name='mother_name'], input#mo_name",
+      "profileKey": "basicInfo.motherNameEn",
+      "section": "basic_info"
+    },
+    "motherNameBn": {
+      "selector": "input#mother_name_ban, input[name='mother_name_ban'], input#mo_name_bn",
+      "profileKey": "basicInfo.motherNameBn",
+      "section": "basic_info"
+    },
+    "dob": {
+      "selector": "input#dob, input[name='dob'], input#birth_date",
+      "profileKey": "basicInfo.dob",
+      "section": "basic_info"
+    },
+    "gender": {
+      "selector": "select#gender, select[name='gender'], select#sex",
+      "profileKey": "basicInfo.gender",
+      "section": "basic_info"
+    },
+    "religion": {
+      "selector": "select#religion, select[name='religion'], select#rel",
+      "profileKey": "basicInfo.religion",
+      "section": "basic_info"
+    },
+    "maritalStatus": {
+      "selector": "select#marital_status, select[name='marital_status'], select#marital",
+      "profileKey": "basicInfo.maritalStatus",
+      "section": "basic_info"
+    },
+    "quota": {
+      "selector": "select#quota, select[name='quota'], select#ffq",
+      "profileKey": "basicInfo.quota",
+      "section": "basic_info"
+    },
+    "nid": {
+      "selector": "select#nid, select[name='nid'], input#nid_no, input[name='nid_no']",
+      "profileKey": "basicInfo.nid",
+      "section": "basic_info"
+    },
+    "birthRegistration": {
+      "selector": "select#breg, select[name='breg'], input#breg_no, input[name='breg_no']",
+      "profileKey": "basicInfo.birthRegistration",
+      "section": "basic_info"
+    },
+    "passport": {
+      "selector": "select#passport, select[name='passport'], input#passport_no, input[name='passport_no']",
+      "profileKey": "basicInfo.passport",
+      "section": "basic_info"
+    },
+    "mobile": {
+      "selector": "input#mobile, input[name='mobile'], input#mobile_number",
+      "profileKey": "basicInfo.phone",
+      "section": "basic_info"
+    },
+    "confirmMobile": {
+      "selector": "input#confirm_mobile, input[name='confirm_mobile'], input#conf_mobile",
+      "profileKey": "basicInfo.phone",
+      "section": "basic_info"
+    },
+    "email": {
+      "selector": "input#email, input[name='email'], input#email_address",
+      "profileKey": "basicInfo.email",
+      "section": "basic_info"
+    },
+    "deptStatus": {
+      "selector": "select#dept_status, select[name='dept_status'], select#departmental_status",
+      "profileKey": "basicInfo.departmentalStatus",
+      "section": "basic_info"
+    },
+    "presentCareOf": {
+      "selector": "input#present_care, input[name='present_care'], input#p_care",
+      "profileKey": "presentAddress.careOf",
+      "section": "present_address"
+    },
+    "presentVillage": {
+      "selector": "input#present_village, input[name='present_village'], input#p_village",
+      "profileKey": "presentAddress.village",
+      "section": "present_address"
+    },
+    "presentDistrict": {
+      "selector": "select#present_district, select[name='present_district'], select#p_district",
+      "profileKey": "presentAddress.district",
+      "section": "present_address"
+    },
+    "presentUpazila": {
+      "selector": "select#present_thana, select[name='present_thana'], select#p_thana, select#present_upazila",
+      "profileKey": "presentAddress.upazila",
+      "section": "present_address"
+    },
+    "presentPostOffice": {
+      "selector": "input#present_post, input[name='present_post'], input#p_post",
+      "profileKey": "presentAddress.postOffice",
+      "section": "present_address"
+    },
+    "presentPostCode": {
+      "selector": "input#present_pcode, input[name='present_pcode'], input#p_post_code",
+      "profileKey": "presentAddress.postCode",
+      "section": "present_address"
+    },
+    "permanentCareOf": {
+      "selector": "input#permanent_care, input[name='permanent_care'], input#per_care",
+      "profileKey": "permanentAddress.careOf",
+      "section": "permanent_address"
+    },
+    "permanentVillage": {
+      "selector": "input#permanent_village, input[name='permanent_village'], input#per_village",
+      "profileKey": "permanentAddress.village",
+      "section": "permanent_address"
+    },
+    "permanentDistrict": {
+      "selector": "select#permanent_district, select[name='permanent_district'], select#per_district",
+      "profileKey": "permanentAddress.district",
+      "section": "permanent_address"
+    },
+    "permanentUpazila": {
+      "selector": "select#permanent_thana, select[name='permanent_thana'], select#per_thana, select#permanent_upazila",
+      "profileKey": "permanentAddress.upazila",
+      "section": "permanent_address"
+    },
+    "permanentPostOffice": {
+      "selector": "input#permanent_post, input[name='permanent_post'], input#per_post",
+      "profileKey": "permanentAddress.postOffice",
+      "section": "permanent_address"
+    },
+    "permanentPostCode": {
+      "selector": "input#permanent_pcode, input[name='permanent_pcode'], input#per_post_code",
+      "profileKey": "permanentAddress.postCode",
+      "section": "permanent_address"
+    },
+    "sscExam": {
+      "selector": "select#ssc_exam, select[name='ssc_exam']",
+      "profileKey": "ssc.exam",
+      "section": "ssc"
+    },
+    "sscBoard": {
+      "selector": "select#ssc_board, select[name='ssc_board']",
+      "profileKey": "ssc.board",
+      "section": "ssc"
+    },
+    "sscRoll": {
+      "selector": "input#ssc_roll, input[name='ssc_roll']",
+      "profileKey": "ssc.roll",
+      "section": "ssc"
+    },
+    "sscResult": {
+      "selector": "select#ssc_result, select[name='ssc_result']",
+      "profileKey": "ssc.gpa",
+      "section": "ssc"
+    },
+    "sscGroup": {
+      "selector": "select#ssc_group, select[name='ssc_group']",
+      "profileKey": "ssc.group",
+      "section": "ssc"
+    },
+    "sscYear": {
+      "selector": "select#ssc_year, select[name='ssc_year']",
+      "profileKey": "ssc.passingYear",
+      "section": "ssc"
+    },
+    "hscExam": {
+      "selector": "select#hsc_exam, select[name='hsc_exam']",
+      "profileKey": "hsc.exam",
+      "section": "hsc"
+    },
+    "hscBoard": {
+      "selector": "select#hsc_board, select[name='hsc_board']",
+      "profileKey": "hsc.board",
+      "section": "hsc"
+    },
+    "hscRoll": {
+      "selector": "input#hsc_roll, input[name='hsc_roll']",
+      "profileKey": "hsc.roll",
+      "section": "hsc"
+    },
+    "hscResult": {
+      "selector": "select#hsc_result, select[name='hsc_result']",
+      "profileKey": "hsc.gpa",
+      "section": "hsc"
+    },
+    "hscGroup": {
+      "selector": "select#hsc_group, select[name='hsc_group']",
+      "profileKey": "hsc.group",
+      "section": "hsc"
+    },
+    "hscYear": {
+      "selector": "select#hsc_year, select[name='hsc_year']",
+      "profileKey": "hsc.passingYear",
+      "section": "hsc"
+    },
+    "graExam": {
+      "selector": "select#gra_exam, select[name='gra_exam']",
+      "profileKey": "graduation.exam",
+      "section": "graduation"
+    },
+    "graInstitute": {
+      "selector": "select#gra_institute, select[name='gra_institute'], input#gra_institute",
+      "profileKey": "graduation.university",
+      "section": "graduation"
+    },
+    "graSubject": {
+      "selector": "select#gra_subject, select[name='gra_subject'], input#gra_subject, input[name='gra_subject']",
+      "profileKey": "graduation.subject",
+      "section": "graduation"
+    },
+    "graResult": {
+      "selector": "select#gra_result, select[name='gra_result']",
+      "profileKey": "graduation.cgpa",
+      "section": "graduation"
+    },
+    "graYear": {
+      "selector": "select#gra_year, select[name='gra_year']",
+      "profileKey": "graduation.passingYear",
+      "section": "graduation"
+    },
+    "graDuration": {
+      "selector": "select#gra_duration, select[name='gra_duration']",
+      "profileKey": "graduation.courseDuration",
+      "section": "graduation"
+    },
+    "masExam": {
+      "selector": "select#mas_exam, select[name='mas_exam']",
+      "profileKey": "masters.exam",
+      "section": "masters"
+    },
+    "masInstitute": {
+      "selector": "select#mas_institute, select[name='mas_institute'], input#mas_institute, input[name='mas_institute']",
+      "profileKey": "masters.university",
+      "section": "masters"
+    },
+    "masSubject": {
+      "selector": "select#mas_subject, select[name='mas_subject'], input#mas_subject, input[name='mas_subject']",
+      "profileKey": "masters.subject",
+      "section": "masters"
+    },
+    "masResult": {
+      "selector": "select#mas_result, select[name='mas_result']",
+      "profileKey": "masters.cgpa",
+      "section": "masters"
+    },
+    "masYear": {
+      "selector": "select#mas_year, select[name='mas_year']",
+      "profileKey": "masters.passingYear",
+      "section": "masters"
+    },
+    "masDuration": {
+      "selector": "select#mas_duration, select[name='mas_duration']",
+      "profileKey": "masters.courseDuration",
+      "section": "masters"
+    },
+    "typingSpeedEnglish": {
+      "selector": "input#typing_speed_english, input[name='typing_speed_english']",
+      "profileKey": "otherQualifications.computerTypingEn",
+      "section": "other_qualifications"
+    },
+    "typingSpeedBangla": {
+      "selector": "input#typing_speed_bangla, input[name='typing_speed_bangla']",
+      "profileKey": "otherQualifications.computerTypingBn",
+      "section": "other_qualifications"
+    },
+    "drivingLicense": {
+      "selector": "input#driving_license_no, input[name='driving_license_no']",
+      "profileKey": "otherQualifications.drivingLicense",
+      "section": "other_qualifications"
+    }
+  }
+}

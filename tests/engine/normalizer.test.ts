@@ -8,7 +8,7 @@ import {
 
 describe('normalizer', () => {
   it('normalizes text with NFC, strips punctuation, lowercase and trims', () => {
-    expect(normalizeText('  Applicant’s Name:  ')).toBe('applicant’s name');
+    expect(normalizeText('  Applicant’s Name:  ')).toBe('applicants name');
     expect(normalizeText('প্রার্থীর নাম : ')).toBe('প্রার্থীর নাম');
     expect(normalizeText('ROLL_NO')).toBe('roll no');
     expect(normalizeText('Date - of - Birth')).toBe('date of birth');

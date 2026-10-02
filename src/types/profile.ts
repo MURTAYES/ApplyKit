@@ -54,7 +54,9 @@ export const HigherEducationSchema = z.object({
 export const JobExperienceSchema = z.object({
   id: z.string().default(() => Math.random().toString(36).substring(2, 9)),
   organization: z.string().default(''),
+  organizationAddress: z.string().default(''),
   designation: z.string().default(''),
+  employmentType: z.string().default(''),
   startDate: z.string().default(''),
   endDate: z.string().default(''),
   isCurrent: z.boolean().default(false),
@@ -91,7 +93,9 @@ export type Profile = z.infer<typeof ProfileSchema>;
 export const defaultJobExperience: JobExperience = {
   id: 'exp-1',
   organization: '',
+  organizationAddress: '',
   designation: '',
+  employmentType: '',
   startDate: '',
   endDate: '',
   isCurrent: false,

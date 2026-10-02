@@ -87,6 +87,29 @@ export function ExperienceSection({
                       </div>
 
                       <div className="form-group">
+                        <label htmlFor={`exp-${exp.id}-emptype`}>
+                          Employed On / Service Nature <span className="req-star">*</span>
+                        </label>
+                        <select
+                          id={`exp-${exp.id}-emptype`}
+                          className="swiss-select mono"
+                          value={exp.employmentType || ''}
+                          onChange={(e) => onChange(exp.id, 'employmentType', e.target.value)}
+                        >
+                          <option value="">Select Employment Type</option>
+                          <option value="Regular Basis Under Revenue Budget">Regular Basis Under Revenue Budget</option>
+                          <option value="Ad-hoc Basis Under Revenue Budget">Ad-hoc Basis Under Revenue Budget</option>
+                          <option value="Temporary Basis Under Revenue Budget">Temporary Basis Under Revenue Budget</option>
+                          <option value="Work Charged Basis Under Revenue Budget">Work Charged Basis Under Revenue Budget</option>
+                          <option value="Temporary Basis Under Development Project">Temporary Basis Under Development Project</option>
+                          <option value="Work Charged Basis Under Development Project">Work Charged Basis Under Development Project</option>
+                          <option value="Autonomous/Semi Autonomous Organization">Autonomous/Semi Autonomous Organization</option>
+                          <option value="Private Organization">Private Organization</option>
+                          <option value="Business/Self Employed">Business/Self Employed</option>
+                        </select>
+                      </div>
+
+                      <div className="form-group">
                         <label htmlFor={`exp-${exp.id}-start`}>
                           Service From (Start Date) <span className="req-star">*</span>
                         </label>

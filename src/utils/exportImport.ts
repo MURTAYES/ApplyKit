@@ -14,7 +14,7 @@ export function exportProfileToJson(profile: Profile): void {
   const blob = new Blob([jsonStr], { type: 'application/json' });
   const url = URL.createObjectURL(blob);
   const dateStr = new Date().toISOString().slice(0, 10);
-  const filename = `donna-profile-${dateStr}.json`;
+  const filename = `applykit-profile-${dateStr}.json`;
 
   const link = document.createElement('a');
   link.href = url;

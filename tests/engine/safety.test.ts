@@ -21,17 +21,17 @@ describe('safety', () => {
     });
   });
 
-  it('strictly excludes submit, button, reset, hidden, file inputs, checkboxes and radios (R1, R2)', () => {
+  it('strictly excludes submit, button, reset, hidden, file inputs, CAPTCHA and declarations (R1-R4)', () => {
     document.body.innerHTML = `
       <input type="submit" id="btn_submit" value="Submit Form" />
       <input type="button" id="btn_next" value="Next" />
       <input type="file" id="file_photo" />
       <input type="hidden" id="csrf_token" value="abc" />
-      <input type="checkbox" id="chk_agree" />
-      <input type="radio" id="rad_opt" />
+      <input type="checkbox" id="chk_agree" name="terms_agree" />
+      <input type="text" id="captcha_input" name="captcha" />
     `;
 
-    ['btn_submit', 'btn_next', 'file_photo', 'csrf_token', 'chk_agree', 'rad_opt'].forEach((id) => {
+    ['btn_submit', 'btn_next', 'file_photo', 'csrf_token', 'chk_agree', 'captcha_input'].forEach((id) => {
       const el = document.getElementById(id) as HTMLElement;
       expect(isEligibleForFill(el)).toBe(false);
     });

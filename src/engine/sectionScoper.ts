@@ -32,8 +32,10 @@ const SECTION_KEYWORDS: Array<{ scope: SectionScope; keywords: string[] }> = [
     scope: 'masters',
     keywords: [
       'masters',
+      'master',
       'post graduation',
       'post graduate',
+      'postgraduate',
       'msc',
       'mba',
       'ma',
@@ -48,6 +50,7 @@ const SECTION_KEYWORDS: Array<{ scope: SectionScope; keywords: string[] }> = [
       'graduation',
       'graduate',
       'bachelor',
+      'bachelors',
       'degree',
       'honours',
       'honors',
@@ -83,10 +86,14 @@ const SECTION_KEYWORDS: Array<{ scope: SectionScope; keywords: string[] }> = [
   {
     scope: 'job_experience',
     keywords: [
+      'job experiences',
       'job experience',
       'employment history',
       'work experience',
+      'experiences',
       'experience',
+      'employment',
+      'job exp',
       'চাকরির অভিজ্ঞতা',
       'অভিজ্ঞতা',
       'কর্মসংস্থান',
@@ -95,8 +102,11 @@ const SECTION_KEYWORDS: Array<{ scope: SectionScope; keywords: string[] }> = [
   {
     scope: 'other_qualifications',
     keywords: [
+      'other qualifications',
       'other qualification',
+      'additional qualifications',
       'additional qualification',
+      'extra qualifications',
       'extra qualification',
       'computer typing',
       'অন্যান্য যোগ্যতা',
@@ -167,16 +177,21 @@ export function detectSectionScope(element: HTMLElement): SectionScope {
         const scope = matchScopeFromText(thead.textContent);
         if (scope) return scope;
       }
+      const thHeader = curr.querySelector('th.sec-header, th.section-header, th, td.sec-header');
+      if (thHeader && thHeader.textContent) {
+        const scope = matchScopeFromText(thHeader.textContent);
+        if (scope) return scope;
+      }
     }
 
     // Check previous siblings at this hierarchy level for headings or legends
     let prev = curr.previousElementSibling;
     while (prev) {
-      if (/^H[1-6]$/.test(prev.tagName) || prev.classList.contains('section-header') || prev.classList.contains('section-title') || prev.tagName === 'LEGEND') {
+      if (/^H[1-6]$/.test(prev.tagName) || prev.classList.contains('section-header') || prev.classList.contains('sec-header') || prev.classList.contains('section-title') || prev.tagName === 'LEGEND') {
         const scope = matchScopeFromText(prev.textContent || '');
         if (scope) return scope;
       }
-      const innerHeading = prev.querySelector('h1, h2, h3, h4, h5, h6, .section-header, .section-title, legend');
+      const innerHeading = prev.querySelector('h1, h2, h3, h4, h5, h6, .section-header, .sec-header, .section-title, legend');
       if (innerHeading && innerHeading.textContent) {
         const scope = matchScopeFromText(innerHeading.textContent);
         if (scope) return scope;
@@ -188,7 +203,7 @@ export function detectSectionScope(element: HTMLElement): SectionScope {
   }
 
   // 2. Global preceding headings traversal in document tree order
-  const allHeadings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, legend, .section-header, .section-title'));
+  const allHeadings = Array.from(document.querySelectorAll('h1, h2, h3, h4, h5, h6, legend, .section-header, .sec-header, .section-title'));
   let nearestPrecedingHeading: Element | null = null;
 
   for (const h of allHeadings) {

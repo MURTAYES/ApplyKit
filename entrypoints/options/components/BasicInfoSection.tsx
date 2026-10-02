@@ -240,12 +240,17 @@ export function BasicInfoSection({ data, onChange }: BasicInfoSectionProps) {
               value={data.quota}
               onChange={(e) => onChange('quota', e.target.value)}
             >
-              <option value="">Non Quota / Standard Merit</option>
-              <option value="Freedom Fighter">Freedom Fighter / Descendant</option>
-              <option value="Physically Handicapped">Physically Handicapped</option>
-              <option value="Orphan">Orphan</option>
+              <option value="">Not Applicable / Non Quota</option>
+              <option value="Not Applicable">Not Applicable</option>
+              <option value="Child of Freedom Fighter">Child of Freedom Fighter</option>
+              <option value="Child of Martyred Freedom Fighter">Child of Martyred Freedom Fighter</option>
+              <option value="Child of War Heroine (Birangana)">Child of War Heroine (Birangana)</option>
+              <option value="Physically Challenged">Physically Challenged</option>
               <option value="Ethnic Minority">Ethnic Minority</option>
-              <option value="Ansar-VDP">Ansar-VDP</option>
+              <option value="Third Gender">Third Gender</option>
+              <option value="Grandchild of Freedom Fighter">Grandchild of Freedom Fighter</option>
+              <option value="Ansar-VDP">Ansar and VDP</option>
+              <option value="Orphan">Orphan</option>
             </select>
           </div>
         </div>

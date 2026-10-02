@@ -14,7 +14,6 @@ const PLACEHOLDER_PATTERNS = [
   /^choose/i,
   /^please\s*select/i,
   /^pick/i,
-  /^none/i,
   /^নির্বাচন/i,
   /^বাছাই/i,
   /^--\s*select\s*--$/i,
@@ -26,13 +25,13 @@ const PLACEHOLDER_PATTERNS = [
 export function isPlaceholderOption(option: HTMLOptionElement): boolean {
   const val = (option.value || '').trim();
   const text = (option.text || '').trim();
+  const normalized = normalizeText(text);
 
-  if (val === '' || val === '0' || val === '-1' || val === 'null' || val === 'undefined') {
+  if (normalized === '' || normalized === '--') {
     return true;
   }
 
-  const normalized = normalizeText(text);
-  if (normalized === '' || normalized === '--') {
+  if (val === '' && (normalized === '' || PLACEHOLDER_PATTERNS.some((pattern) => pattern.test(normalized)))) {
     return true;
   }
 

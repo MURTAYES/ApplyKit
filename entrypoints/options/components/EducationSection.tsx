@@ -1,10 +1,10 @@
 import React from 'react';
 import { SecondaryEducation, HigherEducation } from '../../../src/types/profile';
+import { ALL_BANGLADESH_UNIVERSITIES } from '../../../src/engine/dictionaries/universities';
 
 interface SecondaryEducationProps {
   id: string;
   secCode: string;
-  tierTag: string;
   title: string;
   titleBn: string;
   telemetryTag: string;
@@ -15,7 +15,6 @@ interface SecondaryEducationProps {
 export function SecondaryEducationCard({
   id,
   secCode,
-  tierTag,
   title,
   titleBn,
   telemetryTag,
@@ -28,7 +27,7 @@ export function SecondaryEducationCard({
         <div className="card-header-left">
           <span className="sec-badge">{secCode}</span>
           <h3 className="card-title">
-            {tierTag} {title} <span className="card-title-bn">// {titleBn}</span>
+            {title} <span className="card-title-bn">// {titleBn}</span>
           </h3>
         </div>
         <span className="card-telemetry-tag">{telemetryTag}</span>
@@ -172,7 +171,6 @@ export function SecondaryEducationCard({
 interface HigherEducationProps {
   id: string;
   secCode: string;
-  tierTag: string;
   title: string;
   titleBn: string;
   telemetryTag: string;
@@ -180,23 +178,63 @@ interface HigherEducationProps {
   onChange: (field: keyof HigherEducation, value: string) => void;
 }
 
+const GRADUATION_EXAMS = [
+  'B.Sc Engineering',
+  'Honors',
+  'B.B.A',
+  'B.Sc in Agricultural Science',
+  'M.B.B.S./B.D.S',
+  'Pass Course',
+  'Fazil',
+  'Graduation Equivalent',
+];
+
+const MASTERS_EXAMS = [
+  'M.A',
+  'M.S.S',
+  'M.Sc',
+  'M.Com',
+  'M.B.A',
+  'L.L.M',
+  'Kamil',
+  'Masters Equivalent',
+];
+
+const GRADUATION_DURATIONS = [
+  { value: '03 Years', label: '03 Years' },
+  { value: '04 Years', label: '04 Years' },
+  { value: '05 Years', label: '05 Years' },
+];
+
+const MASTERS_DURATIONS = [
+  { value: '01 Year', label: '01 Year' },
+  { value: '1.5 Years', label: '1.5 Years' },
+  { value: '02 Years', label: '02 Years' },
+  { value: '2.5 Years', label: '2.5 Years' },
+  { value: '03 Years', label: '03 Years' },
+  { value: '3+ Years', label: '3+ Years' },
+];
+
 export function HigherEducationCard({
   id,
   secCode,
-  tierTag,
   title,
   titleBn,
   telemetryTag,
   data,
   onChange,
 }: HigherEducationProps) {
+  const isMasters = id.includes('master');
+  const examOptions = isMasters ? MASTERS_EXAMS : GRADUATION_EXAMS;
+  const durationOptions = isMasters ? MASTERS_DURATIONS : GRADUATION_DURATIONS;
+
   return (
     <section id={id} className="form-card" data-testid={`section-${id}`}>
       <div className="card-header">
         <div className="card-header-left">
           <span className="sec-badge">{secCode}</span>
           <h3 className="card-title">
-            {tierTag} {title} <span className="card-title-bn">// {titleBn}</span>
+            {title} <span className="card-title-bn">// {titleBn}</span>
           </h3>
         </div>
         <span className="card-telemetry-tag">{telemetryTag}</span>
@@ -208,14 +246,20 @@ export function HigherEducationCard({
             <label htmlFor={`${id}-exam`}>
               Examination / Degree Title <span className="req-star">*</span>
             </label>
-            <input
+            <select
               id={`${id}-exam`}
-              type="text"
-              className="swiss-input"
-              placeholder="e.g. B.Sc in CSE / BBA / LL.B."
+              className="swiss-select mono"
               value={data.exam}
               onChange={(e) => onChange('exam', e.target.value)}
-            />
+            >
+              <option value="">Select Examination</option>
+              {examOptions.map((ex) => (
+                <option key={ex} value={ex}>
+                  {ex}
+                </option>
+              ))}
+              <option value="Other">Other / Equivalent</option>
+            </select>
           </div>
 
           <div className="form-group">
@@ -239,11 +283,17 @@ export function HigherEducationCard({
             <input
               id={`${id}-university`}
               type="text"
+              list={`${id}-uni-list`}
               className="swiss-input"
-              placeholder="e.g. University of Dhaka"
+              placeholder="e.g. Bangladesh University of Engineering and Technology (BUET)"
               value={data.university}
               onChange={(e) => onChange('university', e.target.value)}
             />
+            <datalist id={`${id}-uni-list`}>
+              {ALL_BANGLADESH_UNIVERSITIES.map((uni) => (
+                <option key={uni} value={uni} />
+              ))}
+            </datalist>
           </div>
 
           <div className="form-group">
@@ -301,11 +351,11 @@ export function HigherEducationCard({
               onChange={(e) => onChange('courseDuration', e.target.value)}
             >
               <option value="">Select Duration</option>
-              <option value="4 Years">4 Years Program</option>
-              <option value="3 Years">3 Years Program</option>
-              <option value="2 Years">2 Years Program</option>
-              <option value="1 Year">1 Year Program</option>
-              <option value="5 Years">5 Years Combined Degree</option>
+              {durationOptions.map((dur) => (
+                <option key={dur.value} value={dur.value}>
+                  {dur.label}
+                </option>
+              ))}
             </select>
           </div>
         </div>

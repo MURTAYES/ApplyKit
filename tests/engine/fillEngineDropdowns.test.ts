@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { executeFill } from '../../src/engine/fillEngine';
-import { Profile } from '../../src/types/profile';
+import { Profile, defaultProfile } from '../../src/types/profile';
 
 describe('fillEngine - Dropdown & Dependent Selects (Phase 3)', () => {
   beforeEach(() => {
@@ -8,7 +8,9 @@ describe('fillEngine - Dropdown & Dependent Selects (Phase 3)', () => {
   });
 
   const sampleProfile: Profile = {
+    ...defaultProfile,
     basicInfo: {
+      ...defaultProfile.basicInfo,
       nameEn: 'Donna Paulsen',
       nameBn: 'ডোনা পলসেন',
       fatherNameEn: 'James Paulsen',
@@ -75,6 +77,7 @@ describe('fillEngine - Dropdown & Dependent Selects (Phase 3)', () => {
       passingYear: '',
       resultType: '',
       cgpa: '',
+      courseDuration: '',
     },
     jobExperiences: [],
     otherQualifications: {

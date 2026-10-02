@@ -15,6 +15,7 @@ export function normalizeText(text: string): string {
     .normalize('NFC')
     .replace(/[\u200B-\u200D\uFEFF]/g, '') // remove zero-width chars
     .toLowerCase()
+    .replace(/['"’‘`]/g, '') // remove apostrophes and quotes
     .replace(/[:\-–—_/\\.,()#*]/g, ' ') // replace common separators with space
     .replace(/\s+/g, ' ')
     .trim();
@@ -49,7 +50,10 @@ export function asciiToBengaliDigits(str: string): string {
  * default output: YYYY-MM-DD
  * Supports input in YYYY-MM-DD, DD/MM/YYYY, DD-MM-YYYY, or Bengali digit dates.
  */
-export function normalizeDateValue(dateStr: string, targetFormat: 'YYYY-MM-DD' | 'DD/MM/YYYY' | 'DD-MM-YYYY' = 'YYYY-MM-DD'): string {
+export function normalizeDateValue(
+  dateStr: string,
+  targetFormat: 'YYYY-MM-DD' | 'DD/MM/YYYY' | 'DD-MM-YYYY' | 'MM/DD/YYYY' | 'MM-DD-YYYY' = 'YYYY-MM-DD'
+): string {
   if (!dateStr) return '';
   const asciiDate = bengaliToAsciiDigits(dateStr).trim();
 
@@ -82,6 +86,12 @@ export function normalizeDateValue(dateStr: string, targetFormat: 'YYYY-MM-DD' |
   }
   if (targetFormat === 'DD-MM-YYYY') {
     return `${day}-${month}-${year}`;
+  }
+  if (targetFormat === 'MM/DD/YYYY') {
+    return `${month}/${day}/${year}`;
+  }
+  if (targetFormat === 'MM-DD-YYYY') {
+    return `${month}-${day}-${year}`;
   }
   return `${year}-${month}-${day}`;
 }

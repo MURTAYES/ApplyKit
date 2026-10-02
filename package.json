@@ -1,7 +1,7 @@
 {
-  "name": "donna",
+  "name": "applykit",
   "version": "0.1.0",
-  "description": "Donna - Chrome extension that fills job application forms from your local profile",
+  "description": "ApplyKit - The Intelligent, Local-First Job Application Autofiller",
   "private": true,
   "type": "module",
   "scripts": {

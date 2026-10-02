@@ -1,6 +1,6 @@
 import { describe, it, expect, beforeEach } from 'vitest';
 import { executeFill } from '../../src/engine/fillEngine';
-import { Profile } from '../../src/types/profile';
+import { Profile, defaultProfile } from '../../src/types/profile';
 
 describe('fillEngine', () => {
   beforeEach(() => {
@@ -8,7 +8,9 @@ describe('fillEngine', () => {
   });
 
   const mockProfile: Profile = {
+    ...defaultProfile,
     basicInfo: {
+      ...defaultProfile.basicInfo,
       nameEn: 'Harvey Specter',
       nameBn: 'হার্ভি স্পেক্টার',
       fatherNameEn: 'Gordon Specter',

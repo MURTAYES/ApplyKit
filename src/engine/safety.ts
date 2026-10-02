@@ -12,6 +12,62 @@ const COMMON_PLACEHOLDER_PROMPTS = [
   'নির্বাচন করুন',
 ];
 
+const DECLARATION_KEYWORDS = [
+  'declaration',
+  'declare',
+  'certify',
+  'terms',
+  'condition',
+  'agree',
+  'consent',
+  'statement',
+  'শর্তাবলী',
+  'শর্ত',
+  'ঘোষণা',
+  'স্বীকার',
+  'সত্য পাঠ',
+  'শর্ত স্বীকার',
+  'i agree',
+  'i certify',
+  'i declare',
+];
+
+/**
+ * Checks if an element is a declaration, consent, terms agreement, or CAPTCHA element (R3, R4).
+ */
+export function isDeclarationOrCaptcha(element: HTMLElement): boolean {
+  if (!element) return false;
+
+  // 1. Check CAPTCHA
+  if (element.closest('[class*="captcha" i], [id*="captcha" i], iframe')) {
+    return true;
+  }
+  const idAndName = `${element.id} ${element.getAttribute('name') || ''} ${element.className || ''}`.toLowerCase();
+  if (idAndName.includes('captcha') || idAndName.includes('recaptcha') || idAndName.includes('hcaptcha')) {
+    return true;
+  }
+
+  // 2. Check declaration/terms keywords on element attributes
+  for (const kw of DECLARATION_KEYWORDS) {
+    if (idAndName.includes(kw)) {
+      return true;
+    }
+  }
+
+  // 3. Check enclosing label or container text
+  const parentContainer = element.closest('label, td, tr, .form-group, div');
+  if (parentContainer) {
+    const parentText = (parentContainer.textContent || '').toLowerCase();
+    for (const kw of DECLARATION_KEYWORDS) {
+      if (parentText.includes(kw)) {
+        return true;
+      }
+    }
+  }
+
+  return false;
+}
+
 /**
  * Checks if an element is safe and eligible for autofilling.
  * Strictly excludes submit, button, reset, hidden, file inputs, CAPTCHAs, and declarations (R1-R4).
@@ -35,11 +91,6 @@ export function isEligibleForFill(element: HTMLElement): boolean {
       return false;
     }
 
-    // Exclude checkboxes and radios in Phase 3 (handled in Phase 4)
-    if (['checkbox', 'radio'].includes(type)) {
-      return false;
-    }
-
     if (inputEl.disabled || inputEl.readOnly) {
       return false;
     }
@@ -55,23 +106,8 @@ export function isEligibleForFill(element: HTMLElement): boolean {
     }
   }
 
-  // Safety check: Exclude CAPTCHA fields (R3)
-  if (element.closest('[class*="captcha" i], [id*="captcha" i], iframe')) {
-    return false;
-  }
-
-  const idAndName = `${element.id} ${element.getAttribute('name') || ''} ${element.className || ''}`.toLowerCase();
-  if (idAndName.includes('captcha') || idAndName.includes('recaptcha') || idAndName.includes('hcaptcha')) {
-    return false;
-  }
-
-  // Safety check: Exclude Declaration / Terms / Agreement fields (R4)
-  if (
-    idAndName.includes('declaration') ||
-    idAndName.includes('agree') ||
-    idAndName.includes('terms') ||
-    idAndName.includes('consent')
-  ) {
+  // Safety check: Exclude CAPTCHA and Declaration / Terms fields (R3, R4)
+  if (isDeclarationOrCaptcha(element)) {
     return false;
   }
 
@@ -95,7 +131,19 @@ export function isFieldEmpty(element: HTMLInputElement | HTMLTextAreaElement | H
     if (!selected) {
       return true;
     }
-    return isPlaceholderOption(selected);
+    if (isPlaceholderOption(selected)) {
+      return true;
+    }
+    // If the select is at the initial default option and has empty, 0, or -1 value
+    if (element.selectedIndex === 0 && (selected.value === '' || selected.value === '0' || selected.value === '-1')) {
+      return true;
+    }
+    return false;
+  }
+
+  if (element instanceof HTMLInputElement && (element.type === 'checkbox' || element.type === 'radio')) {
+    // For checkboxes and radios, empty check is handled in fill engine depending on user intent
+    return !element.checked;
   }
 
   if (!element.value) {
@@ -110,4 +158,3 @@ export function isFieldEmpty(element: HTMLInputElement | HTMLTextAreaElement | H
   const lower = trimmed.toLowerCase();
   return COMMON_PLACEHOLDER_PROMPTS.some((prompt) => lower === prompt);
 }
-

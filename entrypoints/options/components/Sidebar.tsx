@@ -15,7 +15,7 @@ export const SECTIONS = [
   { id: 'sec-masters', code: '07', label: 'Masters (Optional)', bn: 'স্নাতকোত্তর' },
   { id: 'sec-experience', code: '08', label: 'Job Experience', bn: 'চাকুরীর বিবরণ' },
   { id: 'sec-qualifications', code: '09', label: 'Other Qualifications', bn: 'অন্যান্য যোগ্যতা' },
-  { id: 'sec-danger', code: '10', label: 'Danger Zone', bn: 'তথ্য নিয়ন্ত্রণ' },
+  { id: 'sec-danger', code: '10', label: 'Reset Profile', bn: 'তথ্য নিয়ন্ত্রণ' },
 ];
 
 export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
@@ -30,10 +30,10 @@ export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
             <rect x="70" y="24" width="34" height="80" fill="#FFFFFF" />
           </svg>
           <span className="sidebar-dot"></span>
-          <span>DONNA // CLIENT DOSSIER</span>
+          <span>APPLYKIT</span>
         </div>
-        <h2 className="sidebar-title">APPLICANT REGISTRY</h2>
-        <div className="sidebar-subtitle">// SWISS DISCIPLINE ARCHIVE</div>
+        <h2 className="sidebar-title">APPLICANT PROFILE</h2>
+        <div className="sidebar-subtitle">// LOCAL FORM AUTOFILLER</div>
       </div>
 
       <nav className="sidebar-nav">

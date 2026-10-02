@@ -28,7 +28,7 @@ describe('Options Page App Component', () => {
     expect(screen.getByTestId('nav-sec-masters')).toHaveTextContent(/Masters/i);
     expect(screen.getByTestId('nav-sec-experience')).toHaveTextContent(/Job Experience/i);
     expect(screen.getByTestId('nav-sec-qualifications')).toHaveTextContent(/Other Qualifications/i);
-    expect(screen.getByTestId('nav-sec-danger')).toHaveTextContent(/Danger Zone/i);
+    expect(screen.getByTestId('nav-sec-danger')).toHaveTextContent(/Reset Profile/i);
   });
 
   it('does not render profile completeness indicators or percentage badges (D-06)', async () => {

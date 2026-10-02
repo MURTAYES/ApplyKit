@@ -226,6 +226,7 @@ body {
   align-items: start;
 }
 
+.brand-tag,
 .dossier-tag {
   font-family: var(--font-mono);
   font-size: 11px;

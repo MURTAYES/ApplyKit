@@ -306,4 +306,95 @@ describe('fillEngine - Teletalk Portal Layout', () => {
     expect(mastersExam.value).toBe('1'); // Masters
     expect(mastersSub.value).toBe('Computer Science');
   });
+
+  it('correctly unlocks and fills Teletalk Job Experience section', async () => {
+    const profileWithExp: Profile = {
+      ...fullProfile,
+      jobExperiences: [
+        {
+          id: 'exp-1',
+          organization: 'Tech Innovations Ltd',
+          organizationAddress: 'Gulshan 2, Dhaka',
+          designation: 'Software Engineer',
+          employmentType: 'Private Organization',
+          startDate: '2019-01-01',
+          endDate: '2023-12-31',
+          isCurrent: false,
+          responsibilities: 'Full stack web application development',
+        },
+      ],
+    };
+
+    document.body.innerHTML = `
+      <form id="teletalk_form">
+        <fieldset id="job_experience_section">
+          <legend>Job Experiences</legend>
+          <label><input type="checkbox" id="exp_applicable" name="exp_applicable" /> If Applicable</label>
+          
+          <table class="job-exp-table">
+            <tr>
+              <td>Employed on</td>
+              <td>:</td>
+              <td>
+                <select name="emp_type" id="emp_type">
+                  <option value="">Select</option>
+                  <option value="1">Regular Basis Under Revenue Budget</option>
+                  <option value="2">Autonomous/Semi Autonomous Organization</option>
+                  <option value="3">Private Organization</option>
+                </select>
+              </td>
+              <td>Organization</td>
+              <td>:</td>
+              <td><input type="text" name="organization" id="organization" /></td>
+            </tr>
+            <tr>
+              <td>Designation/Post</td>
+              <td>:</td>
+              <td><input type="text" name="designation" id="designation" /></td>
+              <td>Address</td>
+              <td>:</td>
+              <td><input type="text" name="org_address" id="org_address" /></td>
+            </tr>
+            <tr>
+              <td>Length of Service</td>
+              <td>:</td>
+              <td colspan="4">
+                <input type="text" name="from_date" id="from_date" placeholder="MM/DD/YYYY" />
+                to
+                <input type="text" name="to_date" id="to_date" placeholder="MM/DD/YYYY" />
+                <label><input type="checkbox" name="is_current" id="is_current" /> CurrentlyWorking</label>
+              </td>
+            </tr>
+            <tr>
+              <td>Job Description</td>
+              <td>:</td>
+              <td colspan="4">
+                <textarea name="job_description" id="job_description"></textarea>
+              </td>
+            </tr>
+          </table>
+        </fieldset>
+      </form>
+    `;
+
+    const report = await executeFill(profileWithExp, document);
+
+    const expCb = document.getElementById('exp_applicable') as HTMLInputElement;
+    const empType = document.getElementById('emp_type') as HTMLSelectElement;
+    const org = document.getElementById('organization') as HTMLInputElement;
+    const desig = document.getElementById('designation') as HTMLInputElement;
+    const orgAddr = document.getElementById('org_address') as HTMLInputElement;
+    const fromDate = document.getElementById('from_date') as HTMLInputElement;
+    const toDate = document.getElementById('to_date') as HTMLInputElement;
+    const jobDesc = document.getElementById('job_description') as HTMLTextAreaElement;
+
+    expect(expCb.checked).toBe(true);
+    expect(empType.value).toBe('3'); // Private Organization
+    expect(org.value).toBe('Tech Innovations Ltd');
+    expect(desig.value).toBe('Software Engineer');
+    expect(orgAddr.value).toBe('Gulshan 2, Dhaka');
+    expect(fromDate.value).toBe('01/01/2019'); // Formatted to MM/DD/YYYY per placeholder
+    expect(toDate.value).toBe('12/31/2023'); // Formatted to MM/DD/YYYY per placeholder
+    expect(jobDesc.value).toBe('Full stack web application development');
+  });
 });
