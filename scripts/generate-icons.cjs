@@ -23,14 +23,20 @@ function createPNG(width, height, pixelFn) {
 
   const deflated = zlib.deflateSync(rawData);
 
+  // Standard precomputed CRC32 table
+  const crcTable = [];
+  for (let n = 0; n < 256; n++) {
+    let c = n;
+    for (let k = 0; k < 8; k++) {
+      c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
+    }
+    crcTable[n] = c >>> 0;
+  }
+
   function crc32(buf) {
     let crc = 0xffffffff;
     for (let i = 0; i < buf.length; i++) {
-      let c = (crc ^ buf[i]) & 0xff;
-      for (let j = 0; j < 8; j++) {
-        c = (c & 1) ? (0xedb88320 ^ (c >>> 1)) : (c >>> 1);
-      }
-      crc = (crc >>> 1) ^ c;
+      crc = (crc >>> 8) ^ crcTable[(crc ^ buf[i]) & 0xff];
     }
     return (crc ^ 0xffffffff) >>> 0;
   }
