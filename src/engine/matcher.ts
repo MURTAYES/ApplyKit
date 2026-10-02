@@ -348,7 +348,7 @@ interface CandidateText {
   weight: number;
 }
 
-function extractCandidateTexts(element: HTMLInputElement | HTMLTextAreaElement): CandidateText[] {
+function extractCandidateTexts(element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement): CandidateText[] {
   const candidates: CandidateText[] = [];
 
   // 1. Explicit <label for="id"> (Weight: 1.0)
@@ -450,10 +450,10 @@ function extractCandidateTexts(element: HTMLInputElement | HTMLTextAreaElement):
 }
 
 /**
- * Matches an input or textarea element to a profile key.
+ * Matches an input, textarea, or select element to a profile key.
  */
 export function matchField(
-  element: HTMLInputElement | HTMLTextAreaElement,
+  element: HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement,
   customMappings?: SiteMapping
 ): FieldMatchResult | null {
   // 1. Check custom site mappings first (MATCH-05, MATCH-06)

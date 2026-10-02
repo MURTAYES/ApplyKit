@@ -1,4 +1,4 @@
-import { DISTRICTS, DictionaryEntry } from './districts';
+import { DISTRICTS, type DictionaryEntry } from './districts';
 import { BOARDS } from './boards';
 import { RELIGIONS } from './religions';
 import { GENDERS } from './genders';
@@ -6,7 +6,8 @@ import { RESULTS } from './results';
 import { QUOTAS } from './quotas';
 import { normalizeText } from '../normalizer';
 
-export { DISTRICTS, BOARDS, RELIGIONS, GENDERS, RESULTS, QUOTAS, DictionaryEntry };
+export { DISTRICTS, BOARDS, RELIGIONS, GENDERS, RESULTS, QUOTAS };
+export type { DictionaryEntry };
 
 const ALL_DICTIONARIES: Record<string, DictionaryEntry[]> = {
   district: DISTRICTS,

@@ -8,8 +8,8 @@ export default defineContentScript({
     chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
       if (message.action === 'TRIGGER_FILL') {
         loadProfile()
-          .then((profile) => {
-            const report = executeFill(profile, document);
+          .then(async (profile) => {
+            const report = await executeFill(profile, document);
             sendResponse({ success: true, report });
           })
           .catch((err) => {
@@ -20,3 +20,4 @@ export default defineContentScript({
     });
   },
 });
+

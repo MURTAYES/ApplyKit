@@ -86,7 +86,7 @@ describe('fillEngine', () => {
     },
   };
 
-  it('fills all matching empty form fields from profile and returns telemetry report', () => {
+  it('fills all matching empty form fields from profile and returns telemetry report', async () => {
     document.body.innerHTML = `
       <form id="gov_app_form">
         <fieldset>
@@ -145,7 +145,7 @@ describe('fillEngine', () => {
       </form>
     `;
 
-    const report = executeFill(mockProfile, document);
+    const report = await executeFill(mockProfile, document);
 
     // Verify filled counts
     expect(report.filledCount).toBe(9);
@@ -180,7 +180,7 @@ describe('fillEngine', () => {
     expect(captchaEl.value).toBe('');
   });
 
-  it('leaves user pre-typed fields untouched (FILL-05, R5)', () => {
+  it('leaves user pre-typed fields untouched (FILL-05, R5)', async () => {
     document.body.innerHTML = `
       <div>
         <label for="user_email">Email</label>
@@ -195,7 +195,7 @@ describe('fillEngine', () => {
     const emailEl = document.getElementById('user_email') as HTMLInputElement;
     const nidEl = document.getElementById('user_nid') as HTMLInputElement;
 
-    const report = executeFill(mockProfile, document);
+    const report = await executeFill(mockProfile, document);
 
     expect(emailEl.value).toBe('existing@user.com'); // Preserved
     expect(nidEl.value).toBe('1972001122334455'); // Filled
