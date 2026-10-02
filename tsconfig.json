@@ -1,4 +1,5 @@
 {
+  "extends": "./.wxt/tsconfig.json",
   "compilerOptions": {
     "target": "ES2022",
     "module": "ESNext",
@@ -12,13 +13,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "types": ["wxt/client", "vitest/globals"]
+    "types": ["wxt/client", "vitest/globals", "chrome"]
   },
   "include": [
     "src/**/*",
     "entrypoints/**/*",
     "tests/**/*",
     "wxt.config.ts",
-    "vitest.config.ts"
+    "vitest.config.ts",
+    ".wxt/types/**/*"
   ]
 }

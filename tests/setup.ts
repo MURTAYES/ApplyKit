@@ -10,7 +10,7 @@ if (typeof window !== 'undefined') {
 // Chrome API Mock for unit and component testing
 const storageMemory: Record<string, any> = {};
 
-global.chrome = {
+(globalThis as any).chrome = {
   storage: {
     local: {
       get: vi.fn((keys?: string | string[] | Record<string, any> | null, callback?: (items: { [key: string]: any }) => void) => {
