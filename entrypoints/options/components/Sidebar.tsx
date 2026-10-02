@@ -23,6 +23,12 @@ export function Sidebar({ activeSection, onNavigate }: SidebarProps) {
     <aside className="options-sidebar" aria-label="Profile Sections">
       <div className="sidebar-header">
         <div className="sidebar-brand-row">
+          <svg viewBox="0 0 128 128" width="20" height="20" style={{ flexShrink: 0, marginRight: '4px' }}>
+            <rect width="128" height="128" fill="#0A0A0A" />
+            <rect x="24" y="24" width="34" height="34" fill="#BC0009" />
+            <rect x="24" y="70" width="34" height="34" fill="#FFFFFF" />
+            <rect x="70" y="24" width="34" height="80" fill="#FFFFFF" />
+          </svg>
           <span className="sidebar-dot"></span>
           <span>DONNA // CLIENT DOSSIER</span>
         </div>

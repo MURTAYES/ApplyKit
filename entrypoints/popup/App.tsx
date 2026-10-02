@@ -109,8 +109,18 @@ export default function App() {
         </div>
 
         <div className="popup-brand">
-          <h1 className="popup-title">DONNA</h1>
-          <span className="popup-subtitle">// DOSSIER FILLER</span>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <svg viewBox="0 0 128 128" width="28" height="28" style={{ flexShrink: 0 }}>
+              <rect width="128" height="128" fill="#0A0A0A" />
+              <rect x="24" y="24" width="34" height="34" fill="#BC0009" />
+              <rect x="24" y="70" width="34" height="34" fill="#FFFFFF" />
+              <rect x="70" y="24" width="34" height="80" fill="#FFFFFF" />
+            </svg>
+            <div>
+              <h1 className="popup-title" style={{ margin: 0 }}>DONNA</h1>
+              <span className="popup-subtitle">// DOSSIER FILLER</span>
+            </div>
+          </div>
         </div>
       </header>
 

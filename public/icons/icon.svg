@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <rect width="128" height="128" fill="#0A0A0A"/>
+  <!-- Top Left: Crimson Accent -->
+  <rect x="24" y="24" width="34" height="34" fill="#BC0009"/>
+  <!-- Bottom Left: White Square -->
+  <rect x="24" y="70" width="34" height="34" fill="#FFFFFF"/>
+  <!-- Right: White Vertical Pillar -->
+  <rect x="70" y="24" width="34" height="80" fill="#FFFFFF"/>
+</svg>
