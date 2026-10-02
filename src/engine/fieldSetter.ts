@@ -27,3 +27,28 @@ export function setNativeValue(
   element.dispatchEvent(new Event('change', { bubbles: true }));
   element.dispatchEvent(new Event('blur', { bubbles: true }));
 }
+
+/**
+ * Sets select element value using HTMLSelectElement prototype setter,
+ * updates selectedIndex, and dispatches focus -> input -> change -> blur.
+ */
+export function setNativeSelectValue(
+  element: HTMLSelectElement,
+  value: string
+): void {
+  if (!element) return;
+
+  const descriptor = Object.getOwnPropertyDescriptor(window.HTMLSelectElement.prototype, 'value');
+
+  if (descriptor && descriptor.set) {
+    descriptor.set.call(element, value);
+  } else {
+    element.value = value;
+  }
+
+  element.dispatchEvent(new Event('focus', { bubbles: true }));
+  element.dispatchEvent(new Event('input', { bubbles: true }));
+  element.dispatchEvent(new Event('change', { bubbles: true }));
+  element.dispatchEvent(new Event('blur', { bubbles: true }));
+}
+
