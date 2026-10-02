@@ -1,0 +1,88 @@
+{
+  "basicInfo": {
+    "nameEn": "Harvey Specter",
+    "nameBn": "হার্ভি স্পেক্টার",
+    "fatherNameEn": "Gordon Specter",
+    "fatherNameBn": "গর্ডন স্পেক্টার",
+    "motherNameEn": "Lily Specter",
+    "motherNameBn": "লিলি স্পেক্টার",
+    "dob": "1972-01-22",
+    "gender": "Male",
+    "nid": "1972001122334455",
+    "phone": "01711223344",
+    "email": "harvey@pearsonspecter.com",
+    "bloodGroup": "O+",
+    "religion": "Other",
+    "maritalStatus": "Married",
+    "quota": "Non-Quota"
+  },
+  "presentAddress": {
+    "careOf": "Donna Paulsen",
+    "village": "601 Lexington Avenue, Suite 500",
+    "district": "Dhaka",
+    "upazila": "Gulshan",
+    "postOffice": "Gulshan Model Town",
+    "postCode": "1212"
+  },
+  "permanentAddress": {
+    "careOf": "Gordon Specter",
+    "village": "742 Evergreen Terrace",
+    "district": "Dhaka",
+    "upazila": "Dhanmondi",
+    "postOffice": "Dhanmondi Post",
+    "postCode": "1205"
+  },
+  "ssc": {
+    "exam": "SSC",
+    "board": "Dhaka",
+    "roll": "102030",
+    "resultType": "GPA",
+    "gpa": "5.00",
+    "group": "Science",
+    "passingYear": "1988"
+  },
+  "hsc": {
+    "exam": "HSC",
+    "board": "Dhaka",
+    "roll": "405060",
+    "resultType": "GPA",
+    "gpa": "5.00",
+    "group": "Science",
+    "passingYear": "1990"
+  },
+  "graduation": {
+    "exam": "Honours",
+    "university": "Harvard Law School",
+    "subject": "Juris Doctor / Law",
+    "resultType": "CGPA",
+    "cgpa": "4.00",
+    "passingYear": "1994",
+    "courseDuration": "4"
+  },
+  "masters": {
+    "exam": "Masters",
+    "university": "Harvard Law School",
+    "subject": "Master of Laws (LL.M.)",
+    "resultType": "CGPA",
+    "cgpa": "4.00",
+    "passingYear": "1995",
+    "courseDuration": "1"
+  },
+  "jobExperiences": [
+    {
+      "id": "exp-1",
+      "organization": "Pearson Specter Litt",
+      "designation": "Senior Managing Partner",
+      "startDate": "2011-06-01",
+      "endDate": "",
+      "isCurrent": true,
+      "responsibilities": "Corporate litigation, mergers and acquisitions"
+    }
+  ],
+  "otherQualifications": {
+    "computerTypingEn": "60 WPM",
+    "computerTypingBn": "40 WPM",
+    "drivingLicense": "Light",
+    "extraCurricular": "Debating, Chess"
+  }
+}

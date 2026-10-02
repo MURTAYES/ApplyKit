@@ -17,10 +17,54 @@ export default function App() {
           return;
         }
 
-        chrome.tabs.sendMessage(tab.id, { action: 'TRIGGER_FILL' }, (response) => {
-          if (chrome.runtime.lastError) {
-            setStatusMessage(`! INJECTION FAILED: RELOAD PAGE FIRST`);
+        const tabId = tab.id;
+
+        const sendFillMessage = () => {
+          chrome.tabs.sendMessage(tabId, { action: 'TRIGGER_FILL' }, (response) => {
+            if (chrome.runtime.lastError) {
+              setStatusMessage(`! INJECTION FAILED: ${chrome.runtime.lastError.message || 'PERMISSION DENIED'}`);
+              setIsFilling(false);
+              return;
+            }
+
+            if (response && response.success && response.report) {
+              const { filledCount, unmatchedCount, skippedCount } = response.report;
+              if (filledCount > 0) {
+                setStatusMessage(`✓ FILLED ${filledCount} FIELDS (${unmatchedCount} UNMATCHED, ${skippedCount} SKIPPED)`);
+              } else {
+                setStatusMessage(`// NO MATCHING EMPTY FIELDS (${unmatchedCount} UNMATCHED)`);
+              }
+            } else {
+              setStatusMessage(`! FILL ERROR: ${response?.error || 'UNKNOWN ERROR'}`);
+            }
             setIsFilling(false);
+          });
+        };
+
+        // First attempt direct messaging
+        chrome.tabs.sendMessage(tabId, { action: 'TRIGGER_FILL' }, (response) => {
+          if (chrome.runtime.lastError) {
+            // Content script not loaded yet; inject dynamically via scripting API (SCAF-04)
+            if (chrome.scripting && chrome.scripting.executeScript) {
+              chrome.scripting.executeScript(
+                {
+                  target: { tabId },
+                  files: ['content-scripts/content.js'],
+                },
+                () => {
+                  if (chrome.runtime.lastError) {
+                    setStatusMessage(`! INJECTION FAILED: ${chrome.runtime.lastError.message || 'ENABLE FILE ACCESS IN EXTENSION SETTINGS'}`);
+                    setIsFilling(false);
+                    return;
+                  }
+                  // Small delay to ensure content script listener is bound
+                  setTimeout(sendFillMessage, 100);
+                }
+              );
+            } else {
+              setStatusMessage(`! RELOAD TAB TO INJECT CONTENT SCRIPT`);
+              setIsFilling(false);
+            }
             return;
           }
 

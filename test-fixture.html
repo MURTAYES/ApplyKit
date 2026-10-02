@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Application Form Test Fixture // Donna Form Filler</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #f5f5f7; padding: 24px; color: #111; }
+    .container { max-width: 800px; margin: 0 auto; background: #fff; border: 1px solid #ddd; padding: 32px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+    h1 { font-size: 20px; text-transform: uppercase; border-bottom: 2px solid #BC0009; padding-bottom: 8px; margin-bottom: 20px; }
+    fieldset { border: 1px solid #ccc; padding: 16px; margin-bottom: 20px; }
+    legend { font-weight: bold; color: #BC0009; padding: 0 8px; text-transform: uppercase; font-size: 13px; }
+    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
+    label { display: block; font-size: 12px; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; color: #444; }
+    input[type="text"], input[type="date"], input[type="tel"], input[type="email"], textarea {
+      width: 100%; padding: 8px 12px; border: 1px solid #bbb; font-size: 14px; box-sizing: border-box;
+    }
+    .captcha-box { background: #ffebeb; border: 1px dashed #BC0009; padding: 12px; margin-bottom: 16px; }
+    .submit-bar { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+    button[type="submit"] { background: #111; color: #fff; padding: 10px 24px; border: none; font-weight: bold; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Sample Job Application Form (Test Fixture)</h1>
+    <form id="jobForm" onsubmit="event.preventDefault(); alert('Form submitted!');">
+      
+      <fieldset>
+        <legend>Applicant Information</legend>
+        <div class="grid">
+          <div>
+            <label for="applicant_name">Applicant's Name</label>
+            <input id="applicant_name" type="text" placeholder="Full name in English" />
+          </div>
+          <div>
+            <label for="applicant_name_bn">নাম (বাংলা)</label>
+            <input id="applicant_name_bn" type="text" placeholder="বাংলা নাম" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="father_name">Father's Name</label>
+            <input id="father_name" type="text" />
+          </div>
+          <div>
+            <label for="mother_name">Mother's Name</label>
+            <input id="mother_name" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="dob">Date of Birth</label>
+            <input id="dob" type="date" />
+          </div>
+          <div>
+            <label for="nid">National ID</label>
+            <input id="nid" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="mobile">Mobile Number</label>
+            <input id="mobile" type="tel" />
+          </div>
+          <div>
+            <label for="email">Email Address</label>
+            <input id="email" type="email" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Present Address</legend>
+        <div class="grid">
+          <div>
+            <label for="pres_care_of">Care of</label>
+            <input id="pres_care_of" type="text" />
+          </div>
+          <div>
+            <label for="pres_village">Village / Town / Road</label>
+            <input id="pres_village" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="pres_post_office">Post Office</label>
+            <input id="pres_post_office" type="text" />
+          </div>
+          <div>
+            <label for="pres_post_code">Postal Code</label>
+            <input id="pres_post_code" type="text" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Permanent Address</legend>
+        <div class="grid">
+          <div>
+            <label for="perm_care_of">Care of</label>
+            <input id="perm_care_of" type="text" />
+          </div>
+          <div>
+            <label for="perm_village">Village / Town / Road</label>
+            <input id="perm_village" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="perm_post_office">Post Office</label>
+            <input id="perm_post_office" type="text" />
+          </div>
+          <div>
+            <label for="perm_post_code">Postal Code</label>
+            <input id="perm_post_code" type="text" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>SSC or Equivalent Level</legend>
+        <div class="grid">
+          <div>
+            <label for="ssc_roll">Roll No</label>
+            <input id="ssc_roll" type="text" />
+          </div>
+          <div>
+            <label for="ssc_passing_year">Passing Year</label>
+            <input id="ssc_passing_year" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="ssc_gpa">Result / GPA</label>
+            <input id="ssc_gpa" type="text" />
+          </div>
+          <div>
+            <label for="ssc_board">Board</label>
+            <input id="ssc_board" type="text" />
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>HSC or Equivalent Level</legend>
+        <div class="grid">
+          <div>
+            <label for="hsc_roll">Roll No</label>
+            <input id="hsc_roll" type="text" />
+          </div>
+          <div>
+            <label for="hsc_passing_year">Passing Year</label>
+            <input id="hsc_passing_year" type="text" />
+          </div>
+        </div>
+        <div class="grid">
+          <div>
+            <label for="hsc_gpa">Result / GPA</label>
+            <input id="hsc_gpa" type="text" />
+          </div>
+          <div>
+            <label for="hsc_board">Board</label>
+            <input id="hsc_board" type="text" />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="captcha-box">
+        <label for="captcha_input">CAPTCHA Verification (Should NOT be filled by extension)</label>
+        <input id="captcha_input" type="text" placeholder="Enter CAPTCHA code" />
+      </div>
+
+      <div class="submit-bar">
+        <button type="submit" id="submit_btn">Submit Application</button>
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>
