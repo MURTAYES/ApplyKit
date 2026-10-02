@@ -16,7 +16,7 @@ export function ImportExportActions({
 
   const handleExport = () => {
     exportProfileToJson(profile);
-    setFeedback({ message: 'Profile exported successfully as JSON.', isError: false });
+    setFeedback({ message: '// DOSSIER EXPORTED SUCCESSFULLY AS JSON SPEC', isError: false });
     setTimeout(() => setFeedback(null), 4000);
   };
 
@@ -29,12 +29,12 @@ export function ImportExportActions({
       const result = importProfileFromJson(text);
       if (result.success && result.data) {
         onImportSuccess(result.data);
-        setFeedback({ message: 'Profile imported and saved successfully!', isError: false });
+        setFeedback({ message: '// DOSSIER PARSED, VALIDATED AND PERSISTED TO LOCAL STORAGE', isError: false });
       } else {
-        setFeedback({ message: result.error || 'Failed to import profile.', isError: true });
+        setFeedback({ message: `// ERROR: ${result.error || 'INVALID PAYLOAD'}`, isError: true });
       }
     } catch {
-      setFeedback({ message: 'Error reading selected file.', isError: true });
+      setFeedback({ message: '// ERROR: UNABLE TO READ SELECTED FILE', isError: true });
     } finally {
       if (fileInputRef.current) {
         fileInputRef.current.value = '';
@@ -44,13 +44,10 @@ export function ImportExportActions({
   };
 
   return (
-    <div className="import-export-card">
-      <div className="card-header">
-        <div className="card-header-icon">💾</div>
-        <div>
-          <h4 className="card-title">Backup & Restore</h4>
-          <p className="card-description">Export your profile to a JSON file or import a previous backup</p>
-        </div>
+    <div className="backup-restore-bar">
+      <div className="backup-label-wrap">
+        <span className="backup-title">DOSSIER BACKUP &amp; PORTABILITY // তথ্য সংরক্ষণ</span>
+        <span className="backup-desc">EXPORT SANITIZED JSON DOSSIER OR IMPORT PRIOR SPECIFICATION</span>
       </div>
 
       <div className="action-button-group">
@@ -60,7 +57,7 @@ export function ImportExportActions({
           onClick={handleExport}
           data-testid="export-profile-btn"
         >
-          <span>📤</span> Export Profile (JSON)
+          <span>↑</span> Export JSON [EX-01]
         </button>
 
         <button
@@ -69,7 +66,7 @@ export function ImportExportActions({
           onClick={() => fileInputRef.current?.click()}
           data-testid="import-profile-btn"
         >
-          <span>📥</span> Import Profile (JSON)
+          <span>↓</span> Import JSON [IM-01]
         </button>
 
         <input
@@ -85,6 +82,7 @@ export function ImportExportActions({
       {feedback && (
         <div
           className={`status-message ${feedback.isError ? 'status-error' : 'status-success'}`}
+          style={{ width: '100%' }}
           data-testid="import-export-feedback"
         >
           {feedback.message}

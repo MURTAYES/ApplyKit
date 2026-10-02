@@ -35,7 +35,7 @@ export default function App() {
     return (
       <div className="loading-screen">
         <div className="loading-spinner"></div>
-        <p>Loading Donna profile...</p>
+        <p>// INITIALIZING APPLICANT REGISTRY DOSSIER...</p>
       </div>
     );
   }
@@ -45,20 +45,65 @@ export default function App() {
       <Sidebar activeSection={activeSection} onNavigate={handleNavigate} />
 
       <main className="options-main-content">
-        <header className="page-header">
-          <div className="page-header-text">
-            <h1 className="page-main-title">Applicant Profile</h1>
-            <p className="page-subtitle">
-              Donna fills matching form fields using this data. All fields are optional and stored strictly locally.
-            </p>
+        {/* Top Master Telemetry Bar */}
+        <header className="master-header">
+          <div className="telemetry-bar">
+            <div className="telemetry-left">
+              <span className="sidebar-dot"></span>
+              <span style={{ fontWeight: 800, color: 'var(--obsidian)' }}>
+                DONNA // APPLICANT DOSSIER &amp; CREDENTIALING SYSTEM
+              </span>
+              <span style={{ color: 'var(--hairline)' }}>|</span>
+              <span>LOCAL FORM FILLING ENGINE</span>
+            </div>
+            <div className="telemetry-right">
+              <span>REF: <strong style={{ color: 'var(--obsidian)' }}>[FORM-AP-704]</strong></span>
+              <span>STORAGE: <strong style={{ color: 'var(--obsidian)' }}>LOCAL CHROME MV3</strong></span>
+              <span className="telemetry-badge">MANDATORY DISCLOSURE</span>
+            </div>
           </div>
 
-          <ImportExportActions
-            profile={profile}
-            onImportSuccess={setFullProfile}
-          />
+          <div className="monumental-headline-grid">
+            <div>
+              <div className="dossier-tag">
+                // OFFICIAL PERSONNEL ENROLLMENT DOSSIER
+              </div>
+              <h1 className="page-main-title">
+                APPLICATION FOR TENURE &amp; ADMISSION
+              </h1>
+              <p className="page-subtitle">
+                VERIFICATION OF CIVIL IDENTIFICATION, DOMICILE, STATUTORY CREDENTIALS, AND PROFESSIONAL CHRONICLE.
+              </p>
+            </div>
+
+            <div className="registry-meta-card">
+              <div className="row strong">
+                <span>REGISTRY CODE</span>
+                <span style={{ color: 'var(--crimson)' }}>CLASS-A</span>
+              </div>
+              <div className="row">
+                <span>SPECIFICATION</span>
+                <span>PSL-HR-2024</span>
+              </div>
+              <div className="row">
+                <span>CLEARANCE</span>
+                <span>TIER-01 LOCAL</span>
+              </div>
+              <div className="row" style={{ fontWeight: 800, color: 'var(--obsidian)', marginTop: '4px' }}>
+                <span>FORM LEVEL</span>
+                <span>COMPLETE AUDIT</span>
+              </div>
+            </div>
+          </div>
         </header>
 
+        {/* Backup and Restore Action Bar */}
+        <ImportExportActions
+          profile={profile}
+          onImportSuccess={setFullProfile}
+        />
+
+        {/* Form Sections */}
         <div className="sections-container">
           <BasicInfoSection
             data={profile.basicInfo}
@@ -67,54 +112,64 @@ export default function App() {
 
           <AddressSection
             id="sec-present-addr"
-            title="Present Address"
-            description="Your current residential address"
-            icon="📍"
+            secCode="SEC 02"
+            title="PRESENT ADDRESS"
+            titleBn="বর্তমান ঠিকানা"
+            telemetryTag="ACTIVE CONTACT LOCATION"
             data={profile.presentAddress}
             onChange={(field, val) => updateField('presentAddress', field, val)}
           />
 
           <AddressSection
             id="sec-permanent-addr"
-            title="Permanent Address"
-            description="Your permanent/home district address"
-            icon="🏠"
+            secCode="SEC 03"
+            title="PERMANENT ADDRESS"
+            titleBn="স্থায়ী ঠিকানা"
+            telemetryTag="JURISDICTIONAL SITUS"
             data={profile.permanentAddress}
             onChange={(field, val) => updateField('permanentAddress', field, val)}
           />
 
           <SecondaryEducationCard
             id="sec-ssc"
-            title="SSC / Dakhil / Equivalent"
-            description="Secondary School Certificate details"
-            icon="🎓"
+            secCode="SEC 04"
+            tierTag="[TIER-01]"
+            title="S.S.C. / EQUIVALENT LEVEL"
+            titleBn="মাধ্যমিক বা সমমান"
+            telemetryTag="MINIMUM REQ: COMPLETED"
             data={profile.ssc}
             onChange={(field, val) => updateField('ssc', field, val)}
           />
 
           <SecondaryEducationCard
             id="sec-hsc"
-            title="HSC / Alim / Equivalent"
-            description="Higher Secondary Certificate details"
-            icon="📜"
+            secCode="SEC 05"
+            tierTag="[TIER-02]"
+            title="H.S.C. / EQUIVALENT LEVEL"
+            titleBn="উচ্চ মাধ্যমিক বা সমমান"
+            telemetryTag="MINIMUM REQ: COMPLETED"
             data={profile.hsc}
             onChange={(field, val) => updateField('hsc', field, val)}
           />
 
           <HigherEducationCard
             id="sec-graduation"
-            title="Graduation / Bachelor's Degree"
-            description="Undergraduate academic credentials"
-            icon="🏛️"
+            secCode="SEC 06"
+            tierTag="[TIER-03]"
+            title="GRADUATION / EQUIVALENT LEVEL"
+            titleBn="স্নাতক বা সমমান"
+            telemetryTag="MANDATORY JURIS DEGREE"
             data={profile.graduation}
             onChange={(field, val) => updateField('graduation', field, val)}
           />
 
           <HigherEducationCard
             id="sec-masters"
-            title="Masters / Post-Graduation (Optional)"
-            description="Postgraduate academic credentials if applicable"
-            icon="📚"
+            secCode="SEC 07"
+            tierTag="[TIER-04]"
+            title="MASTERS / POST-GRADUATION LEVEL"
+            titleBn="স্নাতকোত্তর বা সমমান"
+            telemetryTag="OPTIONAL ADVANCED SPECIFICATION"
             data={profile.masters}
             onChange={(field, val) => updateField('masters', field, val)}
           />

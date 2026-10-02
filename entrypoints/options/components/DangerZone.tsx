@@ -20,20 +20,22 @@ export function DangerZone({ onDeleteAll }: DangerZoneProps) {
 
   return (
     <section id="sec-danger" className="form-card danger-card" data-testid="section-danger">
-      <div className="card-header">
-        <div className="card-header-icon danger-icon">⚠️</div>
-        <div>
-          <h3 className="card-title danger-title">Danger Zone</h3>
-          <p className="card-description">Permanent actions and data clearing</p>
+      <div className="card-header danger-header">
+        <div className="card-header-left">
+          <span className="sec-badge">SEC 10</span>
+          <h3 className="card-title">
+            DANGER ZONE <span className="card-title-bn">// সংবেদনশীল নিয়ন্ত্রণ</span>
+          </h3>
         </div>
+        <span className="card-telemetry-tag">IRREVOCABLE STORAGE PURGE</span>
       </div>
 
       <div className="danger-content">
         <div className="danger-description-block">
-          <strong>Delete All Profile Data</strong>
+          <strong>PURGE ALL LOCAL DOSSIER STORAGE</strong>
           <p>
-            This action will permanently erase all saved profile information from your local browser storage.
-            Make sure to export a backup if you wish to keep a copy.
+            This operation irrevocably clears all stored personal, educational, and professional data from the browser's local sandbox storage.
+            Ensure an export backup is saved beforehand if retention is required.
           </p>
         </div>
 
@@ -44,12 +46,12 @@ export function DangerZone({ onDeleteAll }: DangerZoneProps) {
             onClick={() => setShowConfirm(true)}
             data-testid="delete-all-btn"
           >
-            🗑️ Delete All Profile Data
+            DELETE ALL PROFILE DATA [PURGE]
           </button>
         ) : (
           <div className="confirm-modal-box" data-testid="delete-confirm-box">
             <p className="confirm-warning-text">
-              Are you sure? This cannot be undone unless you have a JSON backup.
+              // CAUTION: ARE YOU ABSOLUTELY CERTAIN? THIS ACTION PERMANENTLY WIPES ALL STORED APPLICANT VALUES.
             </p>
             <div className="confirm-btn-row">
               <button
@@ -59,7 +61,7 @@ export function DangerZone({ onDeleteAll }: DangerZoneProps) {
                 disabled={isDeleting}
                 data-testid="confirm-delete-btn"
               >
-                {isDeleting ? 'Deleting...' : 'Yes, Delete Everything'}
+                {isDeleting ? 'PURGING STORAGE...' : 'YES, PURGE ALL DATA'}
               </button>
               <button
                 type="button"
@@ -76,7 +78,7 @@ export function DangerZone({ onDeleteAll }: DangerZoneProps) {
 
         {deletedNotice && (
           <div className="status-message status-success" data-testid="deleted-notice">
-            All profile data has been wiped from storage.
+            // STATUS: ALL PROFILE RECORDS EXPUNGED FROM LOCAL STORAGE
           </div>
         )}
       </div>

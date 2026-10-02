@@ -4,8 +4,8 @@ export default function App() {
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const handleFill = () => {
-    setToastMessage('Fill engine will be active in Phase 2');
-    setTimeout(() => setToastMessage(null), 3000);
+    setToastMessage('// INJECTION ENGINE ENGAGES IN PHASE 2');
+    setTimeout(() => setToastMessage(null), 3500);
   };
 
   const handleOpenProfile = () => {
@@ -16,17 +16,22 @@ export default function App() {
 
   return (
     <div className="popup-container">
-      <div className="popup-header">
-        <div className="popup-brand">
-          <div className="popup-logo">D</div>
+      <header className="popup-header">
+        <div className="popup-telemetry-top">
           <div>
-            <h1 className="popup-title">Donna</h1>
-            <p className="popup-subtitle">Job Application Autofill</p>
+            <span className="telemetry-dot"></span>
+            <span>DONNA // FORM FILLER</span>
           </div>
+          <span className="telemetry-tag">MV3 LOCAL</span>
         </div>
-      </div>
 
-      <div className="popup-body">
+        <div className="popup-brand">
+          <h1 className="popup-title">DONNA</h1>
+          <span className="popup-subtitle">// DOSSIER FILLER</span>
+        </div>
+      </header>
+
+      <main className="popup-body">
         <button
           type="button"
           className="fill-button"
@@ -42,9 +47,10 @@ export default function App() {
             {toastMessage}
           </div>
         )}
-      </div>
+      </main>
 
-      <div className="popup-footer">
+      <footer className="popup-footer">
+        <span className="footer-docket-info">REF: [FORM-AP-704]</span>
         <button
           type="button"
           className="profile-link-button"
@@ -53,7 +59,7 @@ export default function App() {
         >
           Open Profile ↗
         </button>
-      </div>
+      </footer>
     </div>
   );
 }
