@@ -45,8 +45,8 @@ function createPNG(width, height, pixelFn) {
     return Buffer.concat([len, chunkData, crcBuf]);
   }
 
-  // PNG Signature
-  const signature = Buffer.from([137, 80, 78, 72, 13, 10, 26, 10]);
+  // PNG Signature: 0x89, 'P', 'N', 'G', 0x0D, 0x0A, 0x1A, 0x0A
+  const signature = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
 
   // IHDR chunk
   const ihdr = Buffer.alloc(13);
