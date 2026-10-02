@@ -1,11 +1,50 @@
 import React, { useState } from 'react';
 
 export default function App() {
-  const [toastMessage, setToastMessage] = useState<string | null>(null);
+  const [statusMessage, setStatusMessage] = useState<string | null>(null);
+  const [isFilling, setIsFilling] = useState<boolean>(false);
 
-  const handleFill = () => {
-    setToastMessage('// INJECTION ENGINE ENGAGES IN PHASE 2');
-    setTimeout(() => setToastMessage(null), 3500);
+  const handleFill = async () => {
+    setIsFilling(true);
+    setStatusMessage('// EXECUTING FORM DETECTION...');
+
+    if (typeof chrome !== 'undefined' && chrome.tabs && chrome.tabs.query) {
+      try {
+        const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+        if (!tab || !tab.id) {
+          setStatusMessage('! ERROR: NO ACTIVE TAB FOUND');
+          setIsFilling(false);
+          return;
+        }
+
+        chrome.tabs.sendMessage(tab.id, { action: 'TRIGGER_FILL' }, (response) => {
+          if (chrome.runtime.lastError) {
+            setStatusMessage(`! INJECTION FAILED: RELOAD PAGE FIRST`);
+            setIsFilling(false);
+            return;
+          }
+
+          if (response && response.success && response.report) {
+            const { filledCount, unmatchedCount, skippedCount } = response.report;
+            if (filledCount > 0) {
+              setStatusMessage(`✓ FILLED ${filledCount} FIELDS (${unmatchedCount} UNMATCHED, ${skippedCount} SKIPPED)`);
+            } else {
+              setStatusMessage(`// NO MATCHING EMPTY FIELDS (${unmatchedCount} UNMATCHED)`);
+            }
+          } else {
+            setStatusMessage(`! FILL ERROR: ${response?.error || 'UNKNOWN ERROR'}`);
+          }
+          setIsFilling(false);
+        });
+      } catch (err: any) {
+        setStatusMessage(`! FAILED: ${err.message || 'RUNTIME ERROR'}`);
+        setIsFilling(false);
+      }
+    } else {
+      // Fallback for tests/environments without tabs API
+      setStatusMessage('// DEV SIMULATION: FILL COMPLETE');
+      setIsFilling(false);
+    }
   };
 
   const handleOpenProfile = () => {
@@ -36,15 +75,16 @@ export default function App() {
           type="button"
           className="fill-button"
           onClick={handleFill}
+          disabled={isFilling}
           data-testid="fill-button"
         >
-          <span className="fill-icon">⚡</span>
-          Fill Form
+          <span className="fill-icon">{isFilling ? '⏳' : '⚡'}</span>
+          {isFilling ? 'Filling...' : 'Fill Form'}
         </button>
 
-        {toastMessage && (
+        {statusMessage && (
           <div className="toast-banner" data-testid="toast-banner">
-            {toastMessage}
+            {statusMessage}
           </div>
         )}
       </main>

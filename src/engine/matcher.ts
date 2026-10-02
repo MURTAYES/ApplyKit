@@ -11,7 +11,7 @@ interface FieldRule {
 const FIELD_RULES: FieldRule[] = [
   // --- BASIC INFO BILINGUAL & CONTACT ---
   {
-    profileKey: 'basic_info.name_bn',
+    profileKey: 'basicInfo.nameBn',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'nam bangla',
@@ -25,7 +25,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.name_en',
+    profileKey: 'basicInfo.nameEn',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'name english',
@@ -41,7 +41,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.father_name_bn',
+    profileKey: 'basicInfo.fatherNameBn',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'father name bangla',
@@ -51,7 +51,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.father_name_en',
+    profileKey: 'basicInfo.fatherNameEn',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'father name',
@@ -62,7 +62,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.mother_name_bn',
+    profileKey: 'basicInfo.motherNameBn',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'mother name bangla',
@@ -72,7 +72,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.mother_name_en',
+    profileKey: 'basicInfo.motherNameEn',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'mother name',
@@ -83,7 +83,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.dob',
+    profileKey: 'basicInfo.dob',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'date of birth',
@@ -94,7 +94,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.gender',
+    profileKey: 'basicInfo.gender',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'gender',
@@ -103,7 +103,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.marital_status',
+    profileKey: 'basicInfo.maritalStatus',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'marital status',
@@ -112,7 +112,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.religion',
+    profileKey: 'basicInfo.religion',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'religion',
@@ -120,7 +120,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.nid',
+    profileKey: 'basicInfo.nid',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'national id',
@@ -133,44 +133,13 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.passport',
-    sectionAllowed: ['basic_info', 'unknown'],
-    patterns: [
-      'passport no',
-      'passport number',
-      'passport',
-      'পাসপোর্ট নম্বর',
-      'পাসপোর্ট',
-    ],
-  },
-  {
-    profileKey: 'basic_info.birth_reg',
-    sectionAllowed: ['basic_info', 'unknown'],
-    patterns: [
-      'birth registration',
-      'birth certificate',
-      'birth reg no',
-      'জন্ম নিবন্ধন নম্বর',
-      'জন্ম নিবন্ধন',
-      'জন্ম সনদ',
-    ],
-  },
-  {
-    profileKey: 'basic_info.confirm_mobile',
+    profileKey: 'basicInfo.phone',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'confirm mobile',
       're enter mobile',
       'verify mobile',
       'confirm phone',
-      'মোবাইল নিশ্চিত',
-      'মোবাইল পুনঃপ্রবেশ',
-    ],
-  },
-  {
-    profileKey: 'basic_info.mobile',
-    sectionAllowed: ['basic_info', 'unknown'],
-    patterns: [
       'mobile number',
       'mobile no',
       'mobile',
@@ -181,10 +150,11 @@ const FIELD_RULES: FieldRule[] = [
       'মোবাইল নং',
       'মোবাইল',
       'ফোন',
+      'মোবাইল নিশ্চিত',
     ],
   },
   {
-    profileKey: 'basic_info.email',
+    profileKey: 'basicInfo.email',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'email address',
@@ -196,7 +166,7 @@ const FIELD_RULES: FieldRule[] = [
     ],
   },
   {
-    profileKey: 'basic_info.quota',
+    profileKey: 'basicInfo.quota',
     sectionAllowed: ['basic_info', 'unknown'],
     patterns: [
       'quota',
@@ -207,62 +177,62 @@ const FIELD_RULES: FieldRule[] = [
 
   // --- ADDRESS SECTION (Present & Permanent) ---
   {
-    profileKey: 'present_address.care_of',
+    profileKey: 'presentAddress.careOf',
     sectionAllowed: ['present_address'],
     patterns: ['care of', 'c o', 'c/o', 'অভিভাবক', 'প্রযোজ্য'],
   },
   {
-    profileKey: 'permanent_address.care_of',
+    profileKey: 'permanentAddress.careOf',
     sectionAllowed: ['permanent_address'],
     patterns: ['care of', 'c o', 'c/o', 'অভিভাবক', 'প্রযোজ্য'],
   },
   {
-    profileKey: 'present_address.village_town_road',
+    profileKey: 'presentAddress.village',
     sectionAllowed: ['present_address'],
     patterns: ['village town road', 'village road', 'flat road', 'village', 'road', 'গ্রাম রাস্তা', 'গ্রাম', 'মহল্লা'],
   },
   {
-    profileKey: 'permanent_address.village_town_road',
+    profileKey: 'permanentAddress.village',
     sectionAllowed: ['permanent_address'],
     patterns: ['village town road', 'village road', 'flat road', 'village', 'road', 'গ্রাম রাস্তা', 'গ্রাম', 'মহল্লা'],
   },
   {
-    profileKey: 'present_address.post_office',
+    profileKey: 'presentAddress.postOffice',
     sectionAllowed: ['present_address'],
     patterns: ['post office', 'post name', 'ডাকঘর', 'ডাক ঘর'],
   },
   {
-    profileKey: 'permanent_address.post_office',
+    profileKey: 'permanentAddress.postOffice',
     sectionAllowed: ['permanent_address'],
     patterns: ['post office', 'post name', 'ডাকঘর', 'ডাক ঘর'],
   },
   {
-    profileKey: 'present_address.postal_code',
+    profileKey: 'presentAddress.postCode',
     sectionAllowed: ['present_address'],
     patterns: ['postal code', 'post code', 'পোস্ট কোড', 'পোস্টকোড'],
   },
   {
-    profileKey: 'permanent_address.postal_code',
+    profileKey: 'permanentAddress.postCode',
     sectionAllowed: ['permanent_address'],
     patterns: ['postal code', 'post code', 'পোস্ট কোড', 'পোস্টকোড'],
   },
   {
-    profileKey: 'present_address.district',
+    profileKey: 'presentAddress.district',
     sectionAllowed: ['present_address'],
     patterns: ['district', 'জেলা'],
   },
   {
-    profileKey: 'permanent_address.district',
+    profileKey: 'permanentAddress.district',
     sectionAllowed: ['permanent_address'],
     patterns: ['district', 'জেলা'],
   },
   {
-    profileKey: 'present_address.upazila_thana',
+    profileKey: 'presentAddress.upazila',
     sectionAllowed: ['present_address'],
     patterns: ['upazila thana', 'upazila', 'thana', 'উপজেলা', 'থানা'],
   },
   {
-    profileKey: 'permanent_address.upazila_thana',
+    profileKey: 'permanentAddress.upazila',
     sectionAllowed: ['permanent_address'],
     patterns: ['upazila thana', 'upazila', 'thana', 'উপজেলা', 'থানা'],
   },
@@ -270,14 +240,9 @@ const FIELD_RULES: FieldRule[] = [
   // --- EDUCATION SECTIONS (SSC, HSC, Graduation, Masters) ---
   // SSC
   {
-    profileKey: 'ssc.roll_no',
+    profileKey: 'ssc.roll',
     sectionAllowed: ['ssc'],
     patterns: ['roll no', 'roll number', 'roll', 'রোল নম্বর', 'রোল'],
-  },
-  {
-    profileKey: 'ssc.reg_no',
-    sectionAllowed: ['ssc'],
-    patterns: ['registration no', 'reg no', 'reg number', 'registration', 'রেজিস্ট্রেশন নম্বর', 'রেজিস্ট্রেশন'],
   },
   {
     profileKey: 'ssc.board',
@@ -285,31 +250,26 @@ const FIELD_RULES: FieldRule[] = [
     patterns: ['board', 'education board', 'বোর্ড'],
   },
   {
-    profileKey: 'ssc.group_major',
+    profileKey: 'ssc.group',
     sectionAllowed: ['ssc'],
     patterns: ['group', 'major', 'group major', 'subject', 'বিভাগ', 'গ্রুপ'],
   },
   {
-    profileKey: 'ssc.passing_year',
+    profileKey: 'ssc.passingYear',
     sectionAllowed: ['ssc'],
     patterns: ['passing year', 'pass year', 'year of passing', 'year', 'পাশের সন', 'পাশের বছর', 'সন'],
   },
   {
-    profileKey: 'ssc.result_gpa',
+    profileKey: 'ssc.gpa',
     sectionAllowed: ['ssc'],
     patterns: ['result gpa', 'gpa', 'result', 'cgpa', 'ফলাফল', 'জিপিএ'],
   },
 
   // HSC
   {
-    profileKey: 'hsc.roll_no',
+    profileKey: 'hsc.roll',
     sectionAllowed: ['hsc'],
     patterns: ['roll no', 'roll number', 'roll', 'রোল নম্বর', 'রোল'],
-  },
-  {
-    profileKey: 'hsc.reg_no',
-    sectionAllowed: ['hsc'],
-    patterns: ['registration no', 'reg no', 'reg number', 'registration', 'রেজিস্ট্রেশন নম্বর', 'রেজিস্ট্রেশন'],
   },
   {
     profileKey: 'hsc.board',
@@ -317,66 +277,66 @@ const FIELD_RULES: FieldRule[] = [
     patterns: ['board', 'education board', 'বোর্ড'],
   },
   {
-    profileKey: 'hsc.group_major',
+    profileKey: 'hsc.group',
     sectionAllowed: ['hsc'],
     patterns: ['group', 'major', 'group major', 'subject', 'বিভাগ', 'গ্রুপ'],
   },
   {
-    profileKey: 'hsc.passing_year',
+    profileKey: 'hsc.passingYear',
     sectionAllowed: ['hsc'],
     patterns: ['passing year', 'pass year', 'year of passing', 'year', 'পাশের সন', 'পাশের বছর', 'সন'],
   },
   {
-    profileKey: 'hsc.result_gpa',
+    profileKey: 'hsc.gpa',
     sectionAllowed: ['hsc'],
     patterns: ['result gpa', 'gpa', 'result', 'cgpa', 'ফলাফল', 'জিপিএ'],
   },
 
   // Graduation
   {
-    profileKey: 'graduation.subject_degree',
+    profileKey: 'graduation.subject',
     sectionAllowed: ['graduation'],
     patterns: ['subject degree', 'subject', 'degree', 'degree name', 'major', 'বিষয়', 'ডিগ্রী'],
   },
   {
-    profileKey: 'graduation.institute_university',
+    profileKey: 'graduation.university',
     sectionAllowed: ['graduation'],
     patterns: ['institute university', 'university', 'institute', 'college', 'বিশ্ববিদ্যালয়', 'প্রতিষ্ঠান'],
   },
   {
-    profileKey: 'graduation.passing_year',
+    profileKey: 'graduation.passingYear',
     sectionAllowed: ['graduation'],
     patterns: ['passing year', 'pass year', 'year of passing', 'year', 'পাশের সন', 'পাশের বছর', 'সন'],
   },
   {
-    profileKey: 'graduation.result_cgpa',
+    profileKey: 'graduation.cgpa',
     sectionAllowed: ['graduation'],
     patterns: ['result cgpa', 'cgpa', 'result', 'gpa', 'ফলাফল', 'সিজিপিএ'],
   },
   {
-    profileKey: 'graduation.course_duration_years',
+    profileKey: 'graduation.courseDuration',
     sectionAllowed: ['graduation'],
     patterns: ['course duration', 'duration', 'course duration years', 'মেয়াদ'],
   },
 
   // Masters
   {
-    profileKey: 'masters.subject_degree',
+    profileKey: 'masters.subject',
     sectionAllowed: ['masters'],
     patterns: ['subject degree', 'subject', 'degree', 'degree name', 'major', 'বিষয়', 'ডিগ্রী'],
   },
   {
-    profileKey: 'masters.institute_university',
+    profileKey: 'masters.university',
     sectionAllowed: ['masters'],
     patterns: ['institute university', 'university', 'institute', 'college', 'বিশ্ববিদ্যালয়', 'প্রতিষ্ঠান'],
   },
   {
-    profileKey: 'masters.passing_year',
+    profileKey: 'masters.passingYear',
     sectionAllowed: ['masters'],
     patterns: ['passing year', 'pass year', 'year of passing', 'year', 'পাশের সন', 'পাশের বছর', 'সন'],
   },
   {
-    profileKey: 'masters.result_cgpa',
+    profileKey: 'masters.cgpa',
     sectionAllowed: ['masters'],
     patterns: ['result cgpa', 'cgpa', 'result', 'gpa', 'ফলাফল', 'সিজিপিএ'],
   },

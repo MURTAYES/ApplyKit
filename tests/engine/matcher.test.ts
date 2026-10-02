@@ -34,20 +34,20 @@ describe('matcher', () => {
 
     const nameMatch = matchField(nameInput);
     expect(nameMatch).not.toBeNull();
-    expect(nameMatch?.profileKey).toBe('basic_info.name_en');
+    expect(nameMatch?.profileKey).toBe('basicInfo.nameEn');
     expect(nameMatch?.confidence).toBeGreaterThanOrEqual(0.65);
 
     const banglaMatch = matchField(banglaInput);
     expect(banglaMatch).not.toBeNull();
-    expect(banglaMatch?.profileKey).toBe('basic_info.name_bn');
+    expect(banglaMatch?.profileKey).toBe('basicInfo.nameBn');
 
     const nidMatch = matchField(nidInput);
     expect(nidMatch).not.toBeNull();
-    expect(nidMatch?.profileKey).toBe('basic_info.nid');
+    expect(nidMatch?.profileKey).toBe('basicInfo.nid');
 
     const mobileMatch = matchField(mobileInput);
     expect(mobileMatch).not.toBeNull();
-    expect(mobileMatch?.profileKey).toBe('basic_info.mobile');
+    expect(mobileMatch?.profileKey).toBe('basicInfo.phone');
   });
 
   it('differentiates SSC vs HSC fields using section scope', () => {
@@ -81,10 +81,10 @@ describe('matcher', () => {
     const hscRoll = document.getElementById('hsc_roll') as HTMLInputElement;
     const hscYear = document.getElementById('hsc_year') as HTMLInputElement;
 
-    expect(matchField(sscRoll)?.profileKey).toBe('ssc.roll_no');
-    expect(matchField(sscYear)?.profileKey).toBe('ssc.passing_year');
-    expect(matchField(hscRoll)?.profileKey).toBe('hsc.roll_no');
-    expect(matchField(hscYear)?.profileKey).toBe('hsc.passing_year');
+    expect(matchField(sscRoll)?.profileKey).toBe('ssc.roll');
+    expect(matchField(sscYear)?.profileKey).toBe('ssc.passingYear');
+    expect(matchField(hscRoll)?.profileKey).toBe('hsc.roll');
+    expect(matchField(hscYear)?.profileKey).toBe('hsc.passingYear');
   });
 
   it('differentiates Present vs Permanent address fields', () => {
@@ -101,8 +101,8 @@ describe('matcher', () => {
     const presPo = document.getElementById('pres_po') as HTMLInputElement;
     const permPo = document.getElementById('perm_po') as HTMLInputElement;
 
-    expect(matchField(presPo)?.profileKey).toBe('present_address.post_office');
-    expect(matchField(permPo)?.profileKey).toBe('permanent_address.post_office');
+    expect(matchField(presPo)?.profileKey).toBe('presentAddress.postOffice');
+    expect(matchField(permPo)?.profileKey).toBe('permanentAddress.postOffice');
   });
 
   it('applies custom per-site mappings with 1.0 confidence overriding heuristics', () => {
@@ -115,7 +115,7 @@ describe('matcher', () => {
       fields: {
         applicant: {
           selector: '#custom_xyz_123',
-          profileKey: 'basic_info.name_en',
+          profileKey: 'basicInfo.nameEn',
           section: 'basic_info',
         },
       },
@@ -125,7 +125,7 @@ describe('matcher', () => {
     const match = matchField(input, customMapping);
 
     expect(match).not.toBeNull();
-    expect(match?.profileKey).toBe('basic_info.name_en');
+    expect(match?.profileKey).toBe('basicInfo.nameEn');
     expect(match?.confidence).toBe(1.0);
     expect(match?.source).toBe('custom_mapping');
   });

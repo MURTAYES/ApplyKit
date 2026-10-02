@@ -23,7 +23,7 @@ describe('Popup App Component', () => {
     expect(screen.queryByText(/complete/i)).not.toBeInTheDocument();
   });
 
-  it('shows placeholder message when Fill Form is clicked (D-02)', () => {
+  it('shows fill feedback message when Fill Form is clicked (FILL-01)', () => {
     render(<App />);
 
     const fillButton = screen.getByTestId('fill-button');
@@ -31,7 +31,7 @@ describe('Popup App Component', () => {
 
     const toast = screen.getByTestId('toast-banner');
     expect(toast).toBeInTheDocument();
-    expect(toast).toHaveTextContent(/Phase 2/i);
+    expect(toast).toHaveTextContent(/FILL/i);
   });
 
   it('triggers chrome.runtime.openOptionsPage when Open Profile is clicked (D-01)', () => {
